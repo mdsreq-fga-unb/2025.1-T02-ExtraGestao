@@ -1,2 +1,2 @@
-# 2025.1-T02-ExtraGest-o
+# 2025.1-T02-ExtraGestao
 Repositório de projeto da disciplina de REQ-T2.
