@@ -1,25 +1,20 @@
 # ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE
 ## Estratégia Priorizada  
-AObjetivo: definir as funcionalidades a serem desenvolvidas na sprint.
-Frequência: início de cada sprint.
 
+Metodologia: Ágil
+A abordagem ágil foi escolhida por ser adequada a projetos com prazos curtos, entregas rápidas e interação constante com o cliente. A equipe é enxuta (seis membros), o cliente está disponível para reuniões semanais e o tempo total de desenvolvimento é de três meses. Esses fatores favorecem entregas incrementais e adaptação contínua.
 
+Ciclo de Vida: Iterativo e Incremental
+Optamos por um ciclo iterativo e incremental, que permite validar funcionalidades a cada entrega. Isso reduz retrabalho e garante que o produto evolua conforme o feedback do cliente ao longo do projeto.
 
-Sprint Review (Revisão da Sprint)
+Processo: Scrum XP
+Adotamos o Scrum com práticas do Extreme Programming (XP), como TDD e integração contínua. Essa combinação oferece agilidade, qualidade técnica e flexibilidade, essenciais para o prazo e contexto do projeto.
 
-
-Objetivo: apresentar as entregas ao cliente ou stakeholders.
-Frequência: final de cada sprint.
-Importância: coleta de feedback real para ajustes imediatos no produto.
-
-
-Sprint Retrospective (Retrospectiva da Sprint)
-
-
-Objetivo: refletir sobre o processo e identificar melhorias internas.
-Foco: entender o que funcionou bem, o que precisa melhorar e como evitar sobrecargas ou desperdícios.
-Frequência: após a Sprint Review e antes da próxima Sprint Planning.
-
+Cerimônias
+Serão realizadas três cerimônias principais:
+Sprint Planning (início da sprint), para definir as tarefas;
+Sprint Review (final da sprint), para apresentar entregas e coletar feedback;
+Sprint Retrospective, para refletir sobre melhorias no processo.
 
 
 ## 3.2 Quadro Comparativo
