@@ -1,0 +1,54 @@
+.md-header {
+    background-color: #2a2a2a !important;
+}
+
+.md-header .md-nav__item {
+    color: #ffffff !important;
+}
+
+.md-header .md-nav__link:hover {
+    color: #2a2a2a !important;
+    background-color: transparent !important;
+}
+
+.md-header .md-tabs {
+    background-color: #2a2a2a !important;
+}
+
+.md-nav__item .md-nav__link--active,
+.md-nav__item .md-nav__link--active code {
+    color: #ee1800 !important;
+}
+
+.md-nav__item .md-nav__link:hover {
+    color: #ee1800 !important;
+}
+
+
+[data-md-color-scheme="light-mode"] .md-content a {
+    color: #ee1800 !important;
+    text-decoration: underline !important;
+}
+
+[data-md-color-scheme="light-mode"] .md-content a:visited {
+    color: #a12600 !important;
+}
+
+[data-md-color-scheme="light-mode"] .md-content a:hover {
+    color: #ff1e1e !important;
+    text-decoration: underline !important;
+}
+
+[data-md-color-scheme="dark-mode"] .md-content a {
+    color: #bb87eb !important;
+    text-decoration: underline !important;
+}
+
+[data-md-color-scheme="dark-mode"] .md-content a:visited {
+    color: #c670db !important;
+}
+
+[data-md-color-scheme="dark-mode"] .md-content a:hover {
+    color: #e6adad !important;
+    text-decoration: underline !important;
+}
