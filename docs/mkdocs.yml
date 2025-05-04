@@ -14,6 +14,9 @@ nav:
       - "Interação Entre Equipe e Cliente": vpp/interacao-entre-equipe-e-cliente.md
       - "Lições Aprendidas": vpp/licoes-aprendidas.md
 
+  - "Apresentações":
+      - "Apresentação 1": vpp/apresentacao.md
+
 
 theme:
   name: material

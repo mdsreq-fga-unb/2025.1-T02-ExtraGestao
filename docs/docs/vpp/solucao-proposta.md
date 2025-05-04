@@ -1,18 +1,18 @@
 # SOLUÇÃO PROPOSTA
 ## Objetivos do Produto
-O produto é especialmente desenhado para atender a Extra Software. A solução busca otimizar a organização interna, facilitar o acompanhamento de projetos e melhorar a tomada de decisão com base em dados estruturados. Ao resolver os problemas causados por ferramentas genéricas e planilhas descentralizadas, o produto permitirá mais eficiência operacional, controle de tempo e previsibilidade financeira.
+O produto desenvolvido pela Extra Gestão tem como objetivo principal facilitar o acompanhamento de tarefas em equipes pequenas e médias, oferecendo uma alternativa clara e funcional ao uso desorganizado de planilhas e ferramentas genéricas. Ao centralizar as informações e tornar a visualização do progresso mais acessível, a solução promove mais eficiência na rotina das equipes.
+Além disso, a plataforma agregará funcionalidades complementares que apoiam a organização interna e fornecem uma base estruturada para decisões gerenciais, como controle financeiro básico e relatórios operacionais. Essas funcionalidades ampliam o valor do sistema sem desviar o foco da principal necessidade identificada: o acompanhamento eficaz das atividades.
  
 ## Características da Solução
 A solução contará com os seguintes módulos e funcionalidades principais:
-<ul>
-<li>Gestão de Tarefas: Criação, atribuição e acompanhamento de tarefas e demandas por projeto ou cliente.</li>
-<li>Controle Financeiro Integrado: Registro de receitas e despesas por projeto, com geração de relatórios e gráficos de desempenho financeiro.</li>
-<li>Painel de Indicadores (Dashboard): Exibição visual de métricas operacionais e financeiras, auxiliando a análise de rentabilidade.</li>
-<li>Gestão por Permissões e Perfis: Controle de acesso baseado em papéis (roles), garantindo segurança e personalização da experiência.</li>
-<li>Acesso Multi-dispositivo: Interface responsiva que funciona em diferentes dispositivos (desktop, tablet, celular).</li>
-<li>Sessão Segura e Personalizada: Através de autenticação os usuários terão sessões seguras com acesso.</li>
+<ul> 
+<li><strong>Gestão de Tarefas (módulo central):</strong> Permite criar, distribuir e acompanhar tarefas por projeto ou cliente, com controle de status, responsáveis e prazos.</li>
+<li><strong>Painel de Indicadores:</strong> Exibição visual de métricas operacionais, facilitando o acompanhamento do andamento dos projetos.</li>
+<li><strong>Controle Financeiro Complementar:</strong> Registro básico de receitas e despesas por projeto, permitindo uma visão geral do fluxo financeiro.</li> 
+<li><strong>Gestão de Acessos:</strong> Permissões definidas por perfil, para garantir segurança e organização no uso da plataforma.</li> 
+<li><strong>Interface Responsiva:</strong> Acesso garantido por desktop, tablet ou celular, permitindo que os usuários acompanhem suas tarefas de qualquer lugar.</li> <li><strong>Sessões Seguras:</strong> Autenticação com controle de sessão individualizada, garantindo proteção dos dados e uso exclusivo por usuário logado.</li> 
 </ul>
- 
+
 ## Tecnologias Utilizadas
 A solução será desenvolvida com tecnologias modernas e consolidadas no mercado:
 <ul>
@@ -43,11 +43,11 @@ Essas plataformas têm flexibilidade suficiente para atender diferentes níveis 
 Ferramentas de Controle Financeiro:
 Nibo, QuickBooks, ContaAzul e Granatum atendem especificamente microempresas e autônomos com funcionalidades voltadas para controle financeiro, emissão de notas fiscais e gestão do fluxo de caixa. Apesar de eficientes na gestão financeira, essas ferramentas geralmente não oferecem integração direta com a produtividade operacional (gestão de tarefas e projetos), o que obriga os usuários a alternar entre diferentes sistemas, aumentando o tempo gasto em gestão.
 A partir desta análise detalhada, foi possível identificar alguns gaps no mercado, que a “Extra software” utiliza como ponto focal na busca por soluções:
-<ul>
-<li>Falta de integração direta e eficiente entre produtividade operacional e gestão financeira, especialmente no contexto das micro e pequenas empresas.</li>
-<li>Interfaces frequentemente complexas ou excessivamente flexíveis, exigindo tempo significativo para configuração inicial e adaptação contínua.</li>
-<li>Modelos de precificação e planos pagos orientados a empresas maiores, oferecendo funcionalidades que frequentemente não são necessárias ou economicamente viáveis para pequenos empreendedores.</li>
-<li>Pouca personalização disponível para fluxos operacionais mais simples e diretos, prejudicando a experiência e a eficiência dos usuários menos técnicos ou que necessitam de funcionalidades mais objetivas.</li>
+<ul> 
+<li>Excesso de funcionalidades desnecessárias para pequenos times.</li> 
+<li>Dificuldade de configuração inicial em ferramentas muito flexíveis.</li> 
+<li>Necessidade de alternar entre sistemas distintos para tarefas e finanças.</li> 
+<li>Modelos pagos com foco em médias e grandes empresas.</li> 
 </ul>
  
 ## Análise de Viabilidade
