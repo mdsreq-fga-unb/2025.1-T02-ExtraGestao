@@ -20,7 +20,7 @@ A solução será desenvolvida com tecnologias modernas e consolidadas no mercad
 <li>Frontend: Next.js 14 com Server Actions, TailwindCSS para estilização e React para componentes interativos.</li>
 <li>Backend: NestJS para estruturação dos serviços e lógica de negócio.</li>
 <li>Autenticação e Sessão: NextAuth com JWT customizado.</li>
-<li>Banco de Dados: PostgreSQL para persistência relacional e MongoDB para armazenamento flexível (logs, sessões ou históricos).</li>
+<li>Banco de Dados: MySql para persistência relacional</li>
 <li>Integrações:
     <ul>
         <li>Google Calendar (via webhook inteligente com validações de disponibilidade).</li>

@@ -2,11 +2,10 @@
 ## Composição da Equipe
 | Nome               | Função Principal                          | Responsabilidades |
 |--------------------|--------------------------------------------|-------------------|
-| **José Oliveira**  | Analista de Requisitos / Backend / Líder do Grupo | O integrante responsável pelo backend atuará como analista de requisitos e será encarregado da lógica da aplicação, estrutura de dados e integração com o banco. O membro da equipe de Backend cuidará do desenvolvimento do código e das funcionalidades. |
+| **José Oliveira**  | Analista de Requisitos / Líder Backend / Líder do Grupo | O integrante responsável pelo backend atuará como analista de requisitos e será encarregado da lógica da aplicação, estrutura de dados e integração com o banco. O membro da equipe de Backend cuidará do desenvolvimento do código e das funcionalidades. |
 | **Gabriela Dourado** | Analista de Requisitos / Backend | O integrante responsável pelo backend atuará como analista de requisitos e será encarregado da lógica da aplicação, estrutura de dados e integração com o banco de dados. O membro da equipe de Backend cuidará do desenvolvimento do código e das funcionalidades. |
 | **Gustavo**         | Analista de Requisitos / Frontend | O analista de requisitos e membro da Equipe de Frontend será responsável pelo levantamento das necessidades do cliente e desenvolvimento da interface. |
 | **Luis Felipe**     | Analista de Requisitos / Frontend | O analista de requisitos e membro da Equipe de Frontend será responsável pelo levantamento das necessidades do cliente e desenvolvimento da interface. |
-| **Pedro**           | Analista de Requisitos / Líder Backend | O integrante responsável pelo backend atuará como analista de requisitos e será encarregado da lógica da aplicação, estrutura de dados e integração com o banco. Seu líder cuidará da arquitetura técnica, garantindo a qualidade do código e a coerência entre as funcionalidades. |
 | **Vinícius Livramento** | Analista de Requisitos / Líder Frontend | O analista de requisitos e membro da Equipe de Frontend será responsável pelo levantamento das necessidades do cliente e desenvolvimento da interface. O líder dessa equipe irá coordenar tarefas e garantir entregas alinhadas às sprints. |
 
 ## Comunicação
