@@ -9,7 +9,7 @@ nav:
   - "Visão de Produto e Projeto":
       - "Cenário Atual do Cliente e do Negócio": vpp/cenario-atual-do-cliente-e-do-negocio.md
       - "Solução Proposta" : vpp/solucao-proposta.md
-      - "Estratégias de Engenharia de Eoftware" : vpp/estrategias-de-engenharia-de-software.md
+      - "Estratégias de Engenharia de Software" : vpp/estrategias-de-engenharia-de-software.md
       - "Cronograma de Entregas": vpp/crono-programa-de-entregas.md
       - "Interação Entre Equipe e Cliente": vpp/interacao-entre-equipe-e-cliente.md
       - "Lições Aprendidas": vpp/licoes-aprendidas.md
