@@ -43,5 +43,9 @@
     Permitir arrastar e soltar tarefas sempre que viável.</br>
 **RnF-08: Documentar a API**</br>
     Fornecer documentação da API em Swagger.</br>
+**RnF-09: Suportabilidade**</br>
+O sistema deve funcionar corretamente em navegadores modernos como o Safari e Chrome.</br>
+**RnF-10: Requisitos de Implementação**</br>
+O sistema deve ser desenvolvido utilizando a linguagem de programação Typescript tanto no front quanto no backend. O framework frontend deve ser NextJS e o framework do backend deve ser NestJS
 
 
