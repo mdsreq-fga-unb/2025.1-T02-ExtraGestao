@@ -14,7 +14,9 @@ nav:
       - "Interação Entre Equipe e Cliente": vpp/interacao-entre-equipe-e-cliente.md
       - "Lições Aprendidas": vpp/licoes-aprendidas.md
 
-  - "Requisitos": vpp/requisitos/requisitos.md
+  - "Unidade 2":
+      - "Requisitos": vpp/requisitos/requisitos.md
+      - "Backlog do Produto": vpp/backlog-do-produto.md
 
   - "Apresentações":
       - "Apresentação 1": vpp/apresentacao.md
