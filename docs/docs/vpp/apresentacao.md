@@ -1,2 +1,5 @@
 # Gravação entrega 1
 https://youtu.be/8vflMwFlZ9c
+
+# Gravação entrega 2
+https://youtu.be/R9TS0ejUueU
