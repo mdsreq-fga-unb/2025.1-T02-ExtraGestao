@@ -38,13 +38,6 @@ Extra Gestão será um sistema de gerenciamento e controle de tarefas em projeto
       </a>
     </td>
     <td align="center" style="width: 180px; padding: 10px; word-wrap: break-word;">
-      <a href="https://github.com/pedroluizfo">
-        <img src="https://avatars.githubusercontent.com/u/101995982?v=4" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" />
-        <h5 style="margin-top: 10px; font-size: 14px;">Pedro Luiz Fonseca da Silva</h5>
-        <h5 style="margin-top: 10px; font-size: 14px;">Líder Backend</h5>
-      </a>
-    </td>
-    <td align="center" style="width: 180px; padding: 10px; word-wrap: break-word;">
       <a href="https://github.com/Vinialves2020">
         <img src="https://avatars.githubusercontent.com/u/69173517?v=4" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" />
         <h5 style="margin-top: 10px; font-size: 14px;">Vinicius Alves Freitas Livramento</h5>
