@@ -6,13 +6,12 @@ repo_name: 2025.1-T02-ExtraGestao
 
 nav:
   - Sobre: index.md
-  - "Visão de Produto e Projeto":
+  - "Unidade 1":
       - "Cenário Atual do Cliente e do Negócio": vpp/cenario-atual-do-cliente-e-do-negocio.md
       - "Solução Proposta" : vpp/solucao-proposta.md
       - "Estratégias de Engenharia de Software" : vpp/estrategias-de-engenharia-de-software.md
       - "Cronograma de Entregas": vpp/crono-programa-de-entregas.md
       - "Interação Entre Equipe e Cliente": vpp/interacao-entre-equipe-e-cliente.md
-      - "Lições Aprendidas": vpp/licoes-aprendidas.md
 
   - "Unidade 2":
       - "Requisitos": vpp/requisitos/requisitos.md
@@ -20,6 +19,9 @@ nav:
 
   - "Apresentações":
       - "Apresentação 1": vpp/apresentacao.md
+
+  - "Lições Aprendidas":
+      - "Lições Aprendidas": vpp/licoes-aprendidas.md
 
   
 
