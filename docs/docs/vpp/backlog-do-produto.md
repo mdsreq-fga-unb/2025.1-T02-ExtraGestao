@@ -47,6 +47,7 @@ Uma funcionalidade ou tarefa é considerada concluída quando atende a todos os 
 | Atividade | Prática no Projeto| Técnica |
 | ----- | ----- | ----- |
 | Elicitação e Descoberta | Conversa com cliente, brainstorm | Entrevista, user story |
+| Declaração | Criação de histórias de usuário, casos de uso | User story, casos de uso, especificação |
 | Análise e Consenso | Discussão entre equipe e cliente | Decomposição/categorização, brainstorming |
 | Representação | Criação de protótipos, modelagem | Prototipação, user story, modelagem |
 | Validação e Verificação | Testes de aceitação, revisão, feedback de usuário | Testes de usabilidade, revisão por pares, DoR, DoD, prototipação |
