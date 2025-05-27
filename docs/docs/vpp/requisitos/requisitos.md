@@ -7,7 +7,7 @@
 **RF-06: Criar projeto:** Permitir que o usuário crie um projeto informando nome, descrição, data de início, data de fim, e anexando documentos.</br>
 **RF-07: Editar projeto:** Permitir que o usuário edite dados de um projeto existente.</br>
 **RF-08: Excluir projetos:** Permitir que o usuário exclua permanentemente um projeto do sistema.</br>
-**RF-09: Listar projetos:** Permitir que o usuário visualize lista de projetos com informações básicas e status.</br>
+**RF-09: Listar projetos:** Permitir que o usuário visualize lista de projetos em que está envolvido com informações básicas e status.</br>
 **RF-10: Criar tarefa:** Permitir que o usuário crie tarefa, atribuindo-a a um projeto e a um ou mais responsáveis.</br>
 **RF-11: Editar tarefas:** Permitir que o usuário edite tarefa existente.</br>
 **RF-12: Excluir tarefas:** Permitir que o usuário exclua permanentemente tarefa do sistema.</br>
