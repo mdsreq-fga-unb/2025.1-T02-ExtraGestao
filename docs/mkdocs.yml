@@ -17,6 +17,9 @@ nav:
       - "Requisitos": vpp/requisitos/requisitos.md
       - "Backlog do Produto": vpp/backlog-do-produto.md
 
+  - "Processo ER":
+      - "Processo de Engenharia de Requisitos": er/processo-de-engenharia-de-requisitos.md
+
   - "Apresentações":
       - "Apresentação 1": vpp/apresentacao.md
 
