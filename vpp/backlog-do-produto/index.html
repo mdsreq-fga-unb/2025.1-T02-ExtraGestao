@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-introducao" class="md-skip">
+        <a href="#0-introducao" class="md-skip">
           Skip to content
         </a>
       
@@ -710,11 +710,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-introducao" class="md-nav__link">
+  <a href="#0-introducao" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Introdução
+      0. Introdução
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-definicao-de-pronto-dor-e-definicao-de-feito-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Definição de pronto (DoR) e Definição de feito (DoD)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Definição de pronto (DoR) e Definição de feito (DoD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-definicao-de-pronto-dor" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Definição de pronto (DoR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-definicao-de-feito-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Definição de feito (DoD)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1276,11 +1309,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-introducao" class="md-nav__link">
+  <a href="#0-introducao" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Introdução
+      0. Introdução
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-definicao-de-pronto-dor-e-definicao-de-feito-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Definição de pronto (DoR) e Definição de feito (DoD)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Definição de pronto (DoR) e Definição de feito (DoD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-definicao-de-pronto-dor" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Definição de pronto (DoR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-definicao-de-feito-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Definição de feito (DoD)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1515,8 +1581,36 @@
 
   <h1>Backlog do Produto</h1>
 
-<h2 id="1-introducao">1. Introdução</h2>
+<h2 id="0-introducao">0. Introdução</h2>
 <p>O backlog do Extra Gestão é um artefato dinâmico e evolutivo, revisado de forma contínua. Novas demandas, sugestões de stakeholders ou necessidades identificadas durante o desenvolvimento são discutidas em reuniões de refinamento e incorporadas ao backlog de maneira incremental, mantendo a aderência às necessidades do negócio e a flexibilidade no planejamento das entregas</p>
+<h2 id="1-definicao-de-pronto-dor-e-definicao-de-feito-dod">1. Definição de pronto (DoR) e Definição de feito (DoD)</h2>
+<h3 id="11-definicao-de-pronto-dor">1.1 Definição de pronto (DoR)</h3>
+<p>Uma história de usuário está pronta para desenvolvimento quando:</p>
+<ul>
+<li>Clara e objetiva: A descrição da história não deixa margem para interpretações ambíguas. “Clara” significa que qualquer membro do time consegue compreendê-la sem dúvidas; “objetiva” significa que o texto é direto e focado no valor a ser entregue, sem rodeios.</li>
+<li>Possuir critérios de aceitação objetivos, escritos de maneira colaborativa.  Os critérios são criados junto com o Product Owner, desenvolvedores e, se possível, stakeholders. Isso garante que todos tenham o mesmo entendimento sobre quando a história será considerada aceita.</li>
+<li>Não tiver impedimentos técnicos (acessos, dependências, recursos).  Por exemplo, a equipe tem credenciais, ambientes, APIs e dependências externas resolvidas, evitando bloqueios na execução.</li>
+<li>Estiver estimada, priorizada e refinada progressivamente (pronta para sprint).  A história passou por sessões de refinamento, está priorizada no backlog e já foi estimada em pontos. O "refinamento progressivo" se refere à prática de ir amadurecendo a história aos poucos até que ela esteja pronta para desenvolvimento.</li>
+<li>Permite práticas de qualidade desde o início: A história está formulada de modo a permitir práticas como TDD (Test Driven Development), CI/CD (Integração e Entrega Contínua) e técnicas do XP (eXtreme Programming), o que garante qualidade contínua e entrega sustentável.</li>
+</ul>
+<h3 id="12-definicao-de-feito-dod">1.2 Definição de feito (DoD)</h3>
+<p>Uma funcionalidade ou tarefa é considerada concluída quando atende a todos os critérios abaixo:</p>
+<ul>
+<li>Atende todos os critérios de aceitação definidos na DoR.
+  Os critérios de aceitação pertencem a cada história de usuário e são definidos no refinamento, geralmente junto ao PO.</li>
+<li>Código revisado e aprovado.
+ Antes de ser mergeado, o código passa por revisão entre membros da equipe, garantindo qualidade, padrões de codificação e entendimento coletivo. A validação é feita entre desenvolvedores, com o apoio do PO.</li>
+<li>Testes automatizados passam no CI/CD.
+  Toda nova funcionalidade deve conter testes automatizados compatíveis com seu impacto. Não é exigido 100% de cobertura, mas sim cobertura suficiente para garantir que a lógica principal esteja validada por testes de unidade e/ou integração, com execução em pipelines CI/CD.</li>
+<li>Documentação técnica e de uso foi atualizada.
+  Caso a funcionalidade impacte o uso do sistema, toda a documentação de uso (como o GitPages e demais documentações desenvolvidas durante a disciplina, por exemplo) deve ser atualizada. Caso haja alterações relevantes na lógica ou arquitetura, a documentação técnica também deve refletir essas mudanças.</li>
+<li>Interface validada (usabilidade, responsividade).
+Funcionalidades com impacto visual devem ser testadas para garantir que estejam responsivas (em diferentes tamanhos de tela) e com boa usabilidade, considerando o público-alvo. O foco aqui é prevenir problemas de acessibilidade e navegação.</li>
+<li>Mergeada na branch principal e validada em ambiente de homologação.
+Após passar pela revisão e testes, a feature é mergeada na <code>main</code> e automaticamente implantada no ambiente de homologação via CI/CD, onde pode ser validada pelo PO antes do release.</li>
+<li>Sem bugs críticos conhecidos.
+ Bugs críticos são falhas que impedem o uso da funcionalidade ou causam efeitos colaterais graves em outras áreas do sistema. A funcionalidade não pode ser considerada feita enquanto esses bugs estiverem presentes.</li>
+</ul>
 <h2 id="2-criterios-de-priorizacao">2 Critérios de Priorização</h2>
 <h3 id="21-criterios-de-priorizacao">2.1 Critérios de Priorização</h3>
 <p>A priorização do backlog segue critérios consagrados em engenharia de requisitos:</p>
