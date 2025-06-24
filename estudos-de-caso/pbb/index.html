@@ -1644,6 +1644,511 @@ E as novas informações devem ser imediatamente visíveis para outros profissio
 <li>Perfil: Coordenador de Agendamento</li>
 <li>Perfil: Diretor de TI</li>
 </ul>
+<h1 id="construcao-de-backlog-usando-pbb-healthnet">Construção de Backlog usando PBB - HealthNet</h1>
+<h2 id="priorizacao-dos-pbis">Priorização dos PBI's</h2>
+<p>Após a decisão dos PBIs, foi realizada a priorização deles por meio do <strong>COORG</strong>. Os PBI's de prioridade mais alta ficam mais em cima, e os de prioridade baixa, em baixo.</p>
+<h3 id="o-metodo-de-classificacao"><strong>O Método de Classificação</strong></h3>
+<p>O método se baseia em duas variáveis, e a prioridade final é a soma das duas.</p>
+<ol>
+<li><strong>Frequência de Uso:</strong> Mede a frequência com que a persona da história utiliza a funcionalidade.  </li>
+<li><strong>5 - HORA A HORA:</strong> Usado constantemente ao longo do dia de trabalho.  </li>
+<li><strong>4 - DIÁRIO:</strong> Usado ao menos uma vez por dia.  </li>
+<li><strong>3 - SEMANAL:</strong> Usado algumas vezes por semana.  </li>
+<li><strong>2 - MENSAL:</strong> Usado algumas vezes por mês.  </li>
+<li><strong>1 - TRIMESTRAL:</strong> Usado poucas vezes ao ano, geralmente para fins específicos como auditorias.  </li>
+<li><strong>Valor de Negócio:</strong> Mede o impacto da funcionalidade para a HealthNet, seja em segurança, eficiência, conformidade legal ou experiência do paciente.  </li>
+<li><strong>3 - ALTO:</strong> Crítico para a operação, segurança do paciente ou conformidade legal. Resolve um problema central.  </li>
+<li><strong>2 - MÉDIO:</strong> Importante para otimizar processos ou melhorar a experiência, mas não é um bloqueador da operação principal.  </li>
+<li><strong>1 - BAIXO:</strong> Funcionalidade de suporte ou conveniência que agrega valor, mas não é essencial no momento.</li>
+</ol>
+<h3 id="tabela-de-classificacao"><strong>Tabela de Classificação</strong></h3>
+<p>A tabela abaixo mostra a pontuação de cada uma das 13 Histórias de Usuário.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>História de Usuário (Resumo)</th>
+<th>Persona</th>
+<th>Frequência de Uso (Score)</th>
+<th>Valor de Negócio (Score)</th>
+<th>Prioridade (Soma)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US01</strong></td>
+<td>Buscar paciente</td>
+<td>Recepcionista</td>
+<td>HORA A HORA (5)</td>
+<td>ALTO (3)</td>
+<td><strong>8</strong></td>
+</tr>
+<tr>
+<td><strong>US04</strong></td>
+<td>Acessar prontuário</td>
+<td>Médico</td>
+<td>HORA A HORA (5)</td>
+<td>ALTO (3)</td>
+<td><strong>8</strong></td>
+</tr>
+<tr>
+<td><strong>US05</strong></td>
+<td>Adicionar notas/diagnósticos</td>
+<td>Médico</td>
+<td>HORA A HORA (5)</td>
+<td>ALTO (3)</td>
+<td><strong>8</strong></td>
+</tr>
+<tr>
+<td><strong>US08</strong></td>
+<td>Ver agenda unificada</td>
+<td>Coord. Agenda</td>
+<td>HORA A HORA (5)</td>
+<td>ALTO (3)</td>
+<td><strong>8</strong></td>
+</tr>
+<tr>
+<td><strong>US02</strong></td>
+<td>Cadastrar novo paciente</td>
+<td>Recepcionista</td>
+<td>HORA A HORA (5)</td>
+<td>ALTO (3)</td>
+<td><strong>8</strong></td>
+</tr>
+<tr>
+<td><strong>US03</strong></td>
+<td>Marcar consulta rápida</td>
+<td>Recepcionista</td>
+<td>DIÁRIO (4)</td>
+<td>ALTO (3)</td>
+<td><strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>US06</strong></td>
+<td>Criar prescrições com alertas</td>
+<td>Médico</td>
+<td>DIÁRIO (4)</td>
+<td>ALTO (3)</td>
+<td><strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>US07</strong></td>
+<td>Enviar prescrição digital</td>
+<td>Médico</td>
+<td>DIÁRIO (4)</td>
+<td>ALTO (3)</td>
+<td><strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>US09</strong></td>
+<td>Enviar lembretes automáticos</td>
+<td>Coord. Agenda</td>
+<td>DIÁRIO (4)</td>
+<td>ALTO (3)</td>
+<td><strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>US11</strong></td>
+<td>Monitorar saúde do sistema</td>
+<td>Diretor de TI</td>
+<td>DIÁRIO (4)</td>
+<td>ALTO (3)</td>
+<td><strong>7</strong></td>
+</tr>
+<tr>
+<td><strong>US10</strong></td>
+<td>Bloquear/desbloquear horários</td>
+<td>Coord. Agenda</td>
+<td>SEMANAL (3)</td>
+<td>MÉDIO (2)</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td><strong>US13</strong></td>
+<td>Gerenciar perfis de acesso</td>
+<td>Diretor de TI</td>
+<td>MENSAL (2)</td>
+<td>ALTO (3)</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td><strong>US12</strong></td>
+<td>Gerar relatórios de conformidade</td>
+<td>Diretor de TI</td>
+<td>TRIMESTRAL (1)</td>
+<td>ALTO (3)</td>
+<td><strong>4</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="historias-de-usuario">Histórias de Usuário</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Eu, como</th>
+<th>Quero</th>
+<th>Para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US01</td>
+<td>Recepcionista</td>
+<td>buscar e acessar o cadastro de um paciente de qualquer unidade da rede</td>
+<td>agilizar o processo de check-in e reduzir o tempo de espera</td>
+</tr>
+<tr>
+<td>US02</td>
+<td>Recepcionista</td>
+<td>cadastrar um novo paciente em um formulário único e simplificado</td>
+<td>realizar o registro de forma rápida e sem erros</td>
+</tr>
+<tr>
+<td>US03</td>
+<td>Recepcionista</td>
+<td>marcar uma consulta para um paciente de forma rápida</td>
+<td>o atendimento no balcão seja mais eficiente</td>
+</tr>
+<tr>
+<td>US04</td>
+<td>Médico</td>
+<td>acessar o prontuário eletrônico unificado de um paciente</td>
+<td>tomar decisões clínicas mais seguras e informadas</td>
+</tr>
+<tr>
+<td>US05</td>
+<td>Médico</td>
+<td>adicionar notas, diagnósticos e solicitar exames diretamente no prontuário eletrônico</td>
+<td>toda a informação fique registrada em tempo real e de forma organizada</td>
+</tr>
+<tr>
+<td>US06</td>
+<td>Médico</td>
+<td>criar prescrições digitais que alertem sobre possíveis alergias e interações medicamentosas</td>
+<td>garantir a segurança do tratamento</td>
+</tr>
+<tr>
+<td>US07</td>
+<td>Médico</td>
+<td>prescrição digital seja enviada automaticamente para a farmácia e para o portal do paciente,</td>
+<td>processo seja transparente e integrado</td>
+</tr>
+<tr>
+<td>US08</td>
+<td>Coord.Agendamento</td>
+<td>ter uma visão unificada e em tempo real da agenda de todos os médicos e recursos (salas)</td>
+<td>melhor compreensão/organização de horários</td>
+</tr>
+<tr>
+<td>US09</td>
+<td>Coord.Agendamento</td>
+<td>envie lembretes automáticos (SMS/email) aos pacientes</td>
+<td>a taxa de não comparecimento  seja reduzida</td>
+</tr>
+<tr>
+<td>US10</td>
+<td>Coord.Agendamento</td>
+<td>Bloquear/desbloquear horários na agenda dos médicos</td>
+<td>evitar conflitos e otimizar a alocação de horários</td>
+</tr>
+<tr>
+<td>US11</td>
+<td>Diretor de TI</td>
+<td>Ter um painel de controle (dashboard) para monitorar a saúde e o desempenho do sistema</td>
+<td>garantir sua estabilidade e segurança</td>
+</tr>
+<tr>
+<td>US12</td>
+<td>Diretor de TI</td>
+<td>gerar relatórios de auditoria e conformidade de forma automatizada</td>
+<td>HealthNet possa atender às regulamentações (como a LGPD) com facilidade.</td>
+</tr>
+<tr>
+<td>US13</td>
+<td>Diretor de TI</td>
+<td>gerenciar os perfis de acesso dos usuários (médicos, recepcionistas, etc.)</td>
+<td>cada um veja apenas as informações pertinentes à sua função</td>
+</tr>
+</tbody>
+</table>
+<h2 id="criterios-de-aceitacao">Critérios de aceitação</h2>
+<h3 id="perfil-recepcionista_1"><strong>Perfil: Recepcionista</strong></h3>
+<p><strong>US01: Buscar e acessar o cadastro de um paciente de qualquer unidade da rede para agilizar o processo de check-in e reduzir o tempo de espera.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 1.1:</strong> Ao inserir o nome, CPF ou número de identificação do paciente na barra de busca, o sistema deve exibir uma lista de pacientes correspondentes de todas as unidades da rede.  </li>
+<li><strong>Critério de Aceitação 1.2:</strong> Ao selecionar um paciente da lista, o sistema deve carregar o seu cadastro completo em menos de 3 segundos.  </li>
+<li><strong>Critério de Aceitação 1.3:</strong> O sistema deve permitir a busca mesmo com informações parciais (por exemplo, parte do nome).  </li>
+<li><strong>Critério de Aceitação 1.4:</strong> Caso nenhum paciente seja encontrado, o sistema deve exibir a mensagem "Nenhum paciente encontrado" e oferecer um botão para iniciar um novo cadastro.</li>
+</ul>
+<p><strong>US02: Cadastrar um novo paciente em um formulário único e simplificado para realizar o registro de forma rápida e sem erros.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 2.1:</strong> O formulário de cadastro deve conter todos os campos essenciais (nome completo, CPF, data de nascimento, contato, endereço) em uma única página.  </li>
+<li><strong>Critério de Aceitação 2.2:</strong> O sistema deve validar o formato do CPF e da data de nascimento em tempo real, indicando erros de preenchimento antes do envio.  </li>
+<li><strong>Critério de Aceitação 2.3:</strong> Após o preenchimento correto e o clique no botão "Salvar", o cadastro do novo paciente deve ser criado e confirmado com uma mensagem de sucesso.  </li>
+<li><strong>Critério de Aceitação 2.4:</strong> O sistema não deve permitir o cadastro de um novo paciente com um CPF já existente na base de dados, alertando o usuário sobre a duplicidade.</li>
+</ul>
+<p><strong>US03: Marcar uma consulta para um paciente de forma rápida para que o atendimento no balcão seja mais eficiente.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 3.1:</strong> A partir do cadastro do paciente, deve ser possível acessar a funcionalidade de agendamento de consulta com um único clique.  </li>
+<li><strong>Critério de Aceitação 3.2:</strong> O sistema deve exibir a agenda do médico selecionado, mostrando claramente os horários disponíveis.  </li>
+<li><strong>Critério de Aceitação 3.3:</strong> Ao selecionar um horário vago, a consulta deve ser marcada e confirmada instantaneamente.  </li>
+<li><strong>Critério de Aceitação 3.4:</strong> Após a marcação, o sistema deve oferecer a opção de imprimir um comprovante do agendamento para o paciente.</li>
+</ul>
+<h3 id="perfil-medico_1"><strong>Perfil: Médico</strong></h3>
+<p><strong>US04: Acessar o prontuário eletrônico unificado de um paciente para tomar decisões clínicas mais seguras e informadas.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 4.1:</strong> Ao selecionar um paciente agendado, o sistema deve exibir seu prontuário eletrônico completo, consolidando informações de todas as unidades de atendimento.  </li>
+<li><strong>Critério de Aceitação 4.2:</strong> O prontuário deve apresentar o histórico de consultas, exames, diagnósticos e prescrições em ordem cronológica.  </li>
+<li><strong>Critério de Aceitação 4.3:</strong> O tempo de carregamento do prontuário eletrônico não deve exceder 5 segundos.</li>
+</ul>
+<p><strong>US05: Adicionar notas, diagnósticos e solicitar exames diretamente no prontuário eletrônico para que toda a informação fique registrada em tempo real e de forma organizada.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 5.1:</strong> Dentro do prontuário, deve haver seções distintas e claramente identificadas para adicionar notas clínicas, registrar diagnósticos (utilizando CID-10) e solicitar exames.  </li>
+<li><strong>Critério de Aceitação 5.2:</strong> As informações salvas devem ser registradas com data, hora e identificação do médico responsável.  </li>
+<li><strong>Critério de Aceitação 5.3:</strong> As novas informações adicionadas devem ser visíveis imediatamente para outros profissionais autorizados que acessem o mesmo prontuário.</li>
+</ul>
+<p><strong>US06: Criar prescrições digitais que alertem sobre possíveis alergias e interações medicamentosas para garantir a segurança do tratamento.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 6.1:</strong> Ao prescrever um medicamento, o sistema deve verificar automaticamente o histórico de alergias do paciente e exibir um alerta em caso de risco.  </li>
+<li><strong>Critério de Aceitação 6.2:</strong> O sistema deve analisar a prescrição atual em conjunto com os medicamentos já em uso pelo paciente e alertar sobre possíveis interações medicamentosas perigosas.  </li>
+<li><strong>Critério de Aceitação 6.3:</strong> A prescrição só pode ser finalizada após o médico confirmar que leu e está ciente dos alertas exibidos.</li>
+</ul>
+<p><strong>US07: A prescrição digital deve ser enviada automaticamente para a farmácia e para o portal do paciente para que o processo seja transparente e integrado.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 7.1:</strong> Após a finalização da prescrição digital, o sistema deve enviá-la automaticamente para a farmácia conveniada (se aplicável) e para o portal online do paciente.  </li>
+<li><strong>Critério de Aceitação 7.2:</strong> O sistema deve registrar o status do envio (ex: "Enviado com sucesso", "Falha no envio") no prontuário do paciente.  </li>
+<li><strong>Critério de Aceitação 7.3:</strong> O paciente deve receber uma notificação (email ou SMS) informando que uma nova prescrição está disponível em seu portal.</li>
+</ul>
+<h3 id="perfil-coordenador-de-agendamento_1"><strong>Perfil: Coordenador de Agendamento</strong></h3>
+<p><strong>US08: Ter uma visão unificada e em tempo real da agenda de todos os médicos e recursos (salas) para</strong> melhor compreensão/organização de horários<strong>.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 8.1:</strong> O painel de agendamento deve exibir uma visualização (diária, semanal e mensal) das agendas de todos os médicos e salas de consulta lado a lado.  </li>
+<li><strong>Critério de Aceitação 8.2:</strong> O sistema deve impedir o agendamento duplo para o mesmo médico ou mesma sala no mesmo horário, exibindo uma mensagem de erro.  </li>
+<li><strong>Critério de Aceitação 8.3:</strong> A atualização de um agendamento (marcação, cancelamento ou reagendamento) deve ser refletida em tempo real no painel para todos os usuários.</li>
+</ul>
+<p><strong>US09: O sistema deve enviar lembretes automáticos (SMS/email) aos pacientes para que a taxa de não comparecimento seja reduzida.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 9.1:</strong> O sistema deve enviar automaticamente um lembrete de consulta para o paciente via SMS e/ou e-mail 24 horas antes do horário agendado.  </li>
+<li><strong>Critério de Aceitação 9.2:</strong> O lembrete deve conter as informações essenciais: nome do paciente, nome do médico, data, hora e local da consulta.  </li>
+<li><strong>Critério de Aceitação 9.3:</strong> O sistema deve registrar no prontuário do paciente que o lembrete foi enviado e o status da entrega (enviado, falhou).</li>
+</ul>
+<p><strong>US10: Eu quero bloquear e desbloquear horários na agenda dos médicos para que eu possa evitar conflitos (ex: horário de almoço, reuniões) e otimizar a alocação de horários.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 10.1:</strong>  O sistema deve permitir que um usuário com perfil "Coordenador de Agendamento" ou "Admin" selecione um ou mais blocos de horário na agenda de um médico e os marque como "Bloqueado".  </li>
+<li><strong>Critério de Aceitação 10.2:</strong> Um horário bloqueado deve ser visualmente diferente de um horário vago ou de um horário com uma consulta marcada (ex: cor cinza, com um ícone de cadeado).  </li>
+<li><strong>Critério de Aceitação 10.3:</strong> O sistema <strong>não deve permitir</strong> que uma nova consulta seja agendada em um horário que já está bloqueado. Uma mensagem de erro clara, como "Este horário está bloqueado", deve ser exibida.  </li>
+<li><strong>Critério de Aceitação 10.4:</strong>O sistema deve permitir que um horário previamente bloqueado seja desbloqueado, tornando-o novamente disponível para agendamento.  </li>
+<li></li>
+</ul>
+<h3 id="perfil-diretor-de-ti_1"><strong>Perfil: Diretor de TI</strong></h3>
+<p><strong>US11: Ter um painel de controle (dashboard) para monitorar a saúde e o desempenho do sistema para garantir sua estabilidade e segurança.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 11.1:</strong> O dashboard deve exibir em tempo real métricas de desempenho do sistema, como tempo de resposta, uso de CPU e memória.  </li>
+<li><strong>Critério de Aceitação 11.2:</strong> O painel deve mostrar o status de disponibilidade dos principais serviços e integrações do sistema.  </li>
+<li><strong>Critério de Aceitação 11.3:</strong> O sistema deve enviar alertas automáticos para o Diretor de TI caso alguma métrica de saúde ultrapasse um limite pré-definido.</li>
+</ul>
+<p><strong>US12: Gerar relatórios de auditoria e conformidade de forma automatizada para que a HealthNet possa atender às regulamentações (como a LGPD) com facilidade.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 12.1:</strong> O sistema deve permitir a geração de relatórios de auditoria que registrem quem acessou, inseriu, alterou ou excluiu dados de pacientes, com data e hora.  </li>
+<li><strong>Critério de Aceitação 12.2:</strong> Os relatórios devem ser exportáveis em formatos comuns (como PDF e CSV).  </li>
+<li><strong>Critério de Aceitação 12.3:</strong> Deve ser possível filtrar os logs de auditoria por usuário, paciente, período e tipo de ação para atender a solicitações específicas de conformidade com a LGPD.</li>
+</ul>
+<p><strong>US13: Gerenciar os perfis de acesso dos usuários (médicos, recepcionistas, etc.) para que cada um veja apenas as informações pertinentes à sua função.</strong></p>
+<ul>
+<li><strong>Critério de Aceitação 13.1:</strong> O sistema deve possuir perfis de acesso pré-definidos (ex: Recepcionista, Médico, Coordenador, Admin) com permissões específicas para cada um.  </li>
+<li><strong>Critério de Aceitação 13.2:</strong> Um usuário com perfil "Recepcionista" não deve ter acesso a informações clínicas detalhadas do prontuário, como notas de evolução e diagnósticos.  </li>
+<li><strong>Critério de Aceitação 13.3:</strong> Um usuário com perfil "Médico" deve ter acesso completo ao prontuário clínico, mas não deve ter permissão para gerenciar perfis de outros usuários.  </li>
+<li><strong>Critério de Aceitação 13.4:</strong> Apenas usuários com perfil de administrador (como o Diretor de TI) podem criar, editar ou remover contas de usuário e atribuir perfis. </li>
+</ul>
+<h4 id="us01-buscar-e-acessar-o-cadastro-de-um-paciente_1"><strong>US01: Buscar e acessar o cadastro de um paciente</strong></h4>
+<ul>
+<li><strong>Cenário 1: Busca bem-sucedida por nome completo</strong>  </li>
+<li><strong>Dado</strong> que o recepcionista está logado no sistema.  </li>
+<li><strong>E</strong> existe um paciente cadastrado com o nome "José da Silva" em uma das unidades da rede.  </li>
+<li><strong>Quando</strong> o recepcionista insere "José da Silva" na barra de busca.  </li>
+<li><strong>Então</strong> o sistema deve exibir "José da Silva" na lista de pacientes correspondentes.  </li>
+<li><strong>Cenário 2: Busca bem-sucedida por CPF</strong>  </li>
+<li><strong>Dado</strong> que o recepcionista está logado no sistema.  </li>
+<li><strong>E</strong> existe um paciente cadastrado com o CPF "123.456.789-00".  </li>
+<li><strong>Quando</strong> o recepcionista insere "123.456.789-00" na barra de busca.  </li>
+<li><strong>Então</strong> o sistema deve exibir o paciente correspondente a esse CPF na lista.</li>
+</ul>
+<h4 id="us02-cadastrar-um-novo-paciente_1"><strong>US02: Cadastrar um novo paciente</strong></h4>
+<ul>
+<li><strong>Cenário 1: Preenchimento do formulário de cadastro</strong>  </li>
+<li><strong>Dado</strong> que o recepcionista está na tela de cadastro de novo paciente.  </li>
+<li><strong>Quando</strong> ele preenche todos os campos essenciais (nome completo, CPF, data de nascimento, contato, endereço) em uma única página.  </li>
+<li><strong>E</strong> clica no botão "Salvar".  </li>
+<li><strong>Então</strong> o novo paciente deve ser criado com sucesso.  </li>
+<li><strong>E</strong> uma mensagem de sucesso deve ser exibida.  </li>
+<li><strong>Cenário 2: Validação de CPF e data de nascimento em tempo real</strong>  </li>
+<li><strong>Dado</strong> que o recepcionista está preenchendo o formulário de cadastro.  </li>
+<li><strong>Quando</strong> ele insere um CPF com formato inválido.  </li>
+<li><strong>Então</strong> o sistema deve indicar um erro de preenchimento para o campo CPF em tempo real.  </li>
+<li><strong>Quando</strong> ele insere uma data de nascimento com formato inválido.  </li>
+<li><strong>Então</strong> o sistema deve indicar um erro de preenchimento para o campo de data de nascimento em tempo real.</li>
+</ul>
+<h4 id="us03-marcar-uma-consulta-para-um-paciente_1"><strong>US03: Marcar uma consulta para um paciente</strong></h4>
+<ul>
+<li><strong>Cenário 1: Acesso rápido ao agendamento</strong>  </li>
+<li><strong>Dado</strong> que o recepcionista acessou o cadastro de um paciente.  </li>
+<li><strong>Quando</strong> ele clica no botão para agendar uma consulta.  </li>
+<li><strong>Então</strong> o sistema deve levá-lo para a funcionalidade de agendamento com um único clique.  </li>
+<li><strong>Cenário 2: Marcação de consulta em horário vago</strong>  </li>
+<li><strong>Dado</strong> que o recepcionista está na tela de agendamento para um paciente.  </li>
+<li><strong>E</strong> ele selecionou um médico.  </li>
+<li><strong>Quando</strong> ele visualiza a agenda do médico com os horários disponíveis claramente marcados.  </li>
+<li><strong>E</strong> seleciona um horário vago.  </li>
+<li><strong>Então</strong> a consulta deve ser marcada e confirmada instantaneamente.</li>
+</ul>
+<h4 id="us04-acessar-o-prontuario-eletronico-unificado_1"><strong>US04: Acessar o prontuário eletrônico unificado</strong></h4>
+<ul>
+<li><strong>Cenário 1: Visualização do prontuário completo</strong>  </li>
+<li><strong>Dado</strong> que o médico está logado e tem um paciente agendado.  </li>
+<li><strong>Quando</strong> ele seleciona o paciente agendado.  </li>
+<li><strong>Então</strong> o sistema deve exibir o prontuário eletrônico completo do paciente, consolidando informações de todas as unidades.  </li>
+<li><strong>E</strong> o prontuário deve ser carregado em no máximo 5 segundos.  </li>
+<li><strong>Cenário 2: Histórico em ordem cronológica</strong>  </li>
+<li><strong>Dado</strong> que o médico está visualizando o prontuário de um paciente.  </li>
+<li><strong>Quando</strong> ele acessa o histórico do paciente.  </li>
+<li><strong>Então</strong> o prontuário deve apresentar o histórico de consultas, exames, diagnósticos e prescrições em ordem cronológica.</li>
+</ul>
+<h4 id="us05-adicionar-informacoes-no-prontuario-eletronico_1"><strong>US05: Adicionar informações no prontuário eletrônico</strong></h4>
+<ul>
+<li><strong>Cenário 1: Registrar nova informação clínica</strong>  </li>
+<li><strong>Dado</strong> que o médico está com o prontuário de um paciente aberto.  </li>
+<li><strong>Quando</strong> ele adiciona uma nota clínica na seção correspondente.  </li>
+<li><strong>E</strong> registra um diagnóstico utilizando o CID-10.  </li>
+<li><strong>E</strong> solicita um novo exame.  </li>
+<li><strong>E</strong> salva as informações.  </li>
+<li><strong>Então</strong> as informações salvas devem ser registradas com a data, hora e a identificação do médico responsável.  </li>
+<li><strong>E</strong> as novas informações devem ser imediatamente visíveis para outros profissionais autorizados.</li>
+</ul>
+<h4 id="us06-criar-prescricoes-digitais-com-alertas_1"><strong>US06: Criar prescrições digitais com alertas</strong></h4>
+<ul>
+<li><strong>Cenário 1: Alerta de alergia a medicamento</strong>  </li>
+<li><strong>Dado</strong> que o paciente possui um registro de alergia a "penicilina".  </li>
+<li><strong>Quando</strong> o médico tenta prescrever um medicamento que contém "penicilina".  </li>
+<li><strong>Então</strong> o sistema deve exibir um alerta sobre o risco de alergia.  </li>
+<li><strong>Cenário 2: Alerta de interação medicamentosa</strong>  </li>
+<li><strong>Dado</strong> que o paciente já faz uso de um medicamento "A".  </li>
+<li><strong>Quando</strong> o médico tenta prescrever um medicamento "B" que tem interação perigosa com "A".  </li>
+<li><strong>Então</strong> o sistema deve alertar sobre a possível interação medicamentosa.  </li>
+<li><strong>Cenário 3: Confirmação de leitura dos alertas</strong>  </li>
+<li><strong>Dado</strong> que o sistema exibiu um ou mais alertas de segurança.  </li>
+<li><strong>Quando</strong> o médico tenta finalizar a prescrição.  </li>
+<li><strong>Então</strong> a prescrição só pode ser finalizada após o médico confirmar que leu e está ciente dos alertas exibidos.</li>
+</ul>
+<h4 id="us07-envio-automatico-da-prescricao-digital_1"><strong>US07: Envio automático da prescrição digital</strong></h4>
+<ul>
+<li><strong>Cenário 1: Envio automático bem-sucedido</strong>  </li>
+<li><strong>Dado</strong> que o médico finalizou uma prescrição digital.  </li>
+<li><strong>Quando</strong> a prescrição é salva.  </li>
+<li><strong>Então</strong> o sistema deve enviá-la automaticamente para a farmácia conveniada e para o portal do paciente.  </li>
+<li><strong>E</strong> o paciente deve receber uma notificação (email ou SMS) sobre a nova prescrição.  </li>
+<li><strong>E</strong> o status "Enviado com sucesso" deve ser registrado no prontuário.</li>
+</ul>
+<h4 id="us08-ter-uma-visao-unificada-das-agendas_1"><strong>US08: Ter uma visão unificada das agendas</strong></h4>
+<ul>
+<li><strong>Cenário 1: Visualização consolidada de agendas</strong>  </li>
+<li><strong>Dado</strong> que o coordenador de agendamento está logado no sistema.  </li>
+<li><strong>Quando</strong> ele acessa o painel de agendamento.  </li>
+<li><strong>Então</strong> o painel deve exibir uma visualização diária, semanal e mensal das agendas de todos os médicos e salas lado a lado.  </li>
+<li><strong>Cenário 2: Prevenção de agendamento duplo</strong>  </li>
+<li><strong>Dado</strong> que o médico "Dr. João" já tem um horário agendado às 10:00.  </li>
+<li><strong>Quando</strong> o coordenador tenta marcar outra consulta para "Dr. João" no mesmo horário.  </li>
+<li><strong>Então</strong> o sistema deve impedir o agendamento.  </li>
+<li><strong>E</strong> deve exibir uma mensagem de erro informando o conflito.  </li>
+<li><strong>Cenário 3: Atualização em tempo real</strong>  </li>
+<li><strong>Dado</strong> que o coordenador está com o painel de agendas aberto.  </li>
+<li><strong>Quando</strong> um recepcionista cancela uma consulta.  </li>
+<li><strong>Então</strong> o cancelamento deve ser refletido em tempo real no painel do coordenador.</li>
+</ul>
+<h4 id="us09-enviar-lembretes-automaticos-aos-pacientes_1"><strong>US09: Enviar lembretes automáticos aos pacientes</strong></h4>
+<ul>
+<li><strong>Cenário 1: Envio de lembrete 24 horas antes</strong>  </li>
+<li><strong>Dado</strong> que um paciente tem uma consulta agendada para amanhã.  </li>
+<li><strong>Quando</strong> o sistema verifica os agendamentos do dia seguinte.  </li>
+<li><strong>Então</strong> o sistema deve enviar automaticamente um lembrete via SMS e/ou e-mail para o paciente 24 horas antes do horário.  </li>
+<li><strong>E</strong> o lembrete deve conter o nome do paciente, nome do médico, data, hora e local da consulta.  </li>
+<li><strong>E</strong> o sistema deve registrar no prontuário do paciente que o lembrete foi enviado.</li>
+</ul>
+<h4 id="us10-bloqueardesbloquear-horarios-na-agenda-dos-medicos_1"><strong>US10: Bloquear/desbloquear horários na agenda dos médicos</strong></h4>
+<ul>
+<li>
+<h3 id="cenario-1-bloquear-um-horario-vago-com-sucesso"><strong>Cenário 1: Bloquear um horário vago com sucesso</strong></h3>
+</li>
+<li>
+<p><strong>Dado que</strong> eu sou um Coordenador de Agendamento e estou logado no sistema  </p>
+</li>
+<li><strong>E</strong> estou visualizando a agenda do Dr. João, que possui um horário vago às 14:00  </li>
+<li><strong>Quando</strong> eu seleciono o horário das 14:00 e escolho a opção "Bloquear Horário"  </li>
+<li><strong>E</strong> informo o motivo "Reunião de equipe"  </li>
+<li><strong>Então</strong> o horário das 14:00 na agenda do Dr. João deve ser exibido como "Bloqueado"  </li>
+<li>
+<p><strong>E</strong> não deve ser possível agendar uma nova consulta neste horário.</p>
+</li>
+<li>
+<h3 id="cenario-2-tentar-agendar-em-um-horario-bloqueado"><strong>Cenário 2: Tentar agendar em um horário bloqueado</strong></h3>
+</li>
+<li>
+<p><strong>Dado que</strong> eu sou uma Recepcionista e estou logada no sistema  </p>
+</li>
+<li><strong>E</strong> a agenda do Dr. João tem um bloqueio às 14:00  </li>
+<li><strong>Quando</strong> eu tento marcar uma nova consulta para um paciente às 14:00 com o Dr. João  </li>
+<li><strong>Então</strong> o sistema deve exibir uma mensagem de erro informando "Este horário está bloqueado"  </li>
+<li>
+<p><strong>E</strong> a consulta não deve ser agendada.</p>
+</li>
+<li>
+<h3 id="cenario-3-desbloquear-um-horario-com-sucesso"><strong>Cenário 3: Desbloquear um horário com sucesso</strong></h3>
+</li>
+<li>
+<p><strong>Dado que</strong> eu sou um Coordenador de Agendamento e estou logado no sistema  </p>
+</li>
+<li><strong>E</strong> a agenda do Dr. João possui um horário bloqueado às 14:00  </li>
+<li><strong>Quando</strong> eu seleciono o horário das 14:00 e escolho a opção "Desbloquear Horário"  </li>
+<li><strong>Então</strong> o horário das 14:00 na agenda do Dr. João deve voltar a ser exibido como "Disponível"  </li>
+<li><strong>E</strong> deve ser possível agendar uma nova consulta neste horário.</li>
+</ul>
+<h4 id="us11-monitorar-a-saude-e-o-desempenho-do-sistema_1"><strong>US11: Monitorar a saúde e o desempenho do sistema</strong></h4>
+<ul>
+<li><strong>Cenário 1: Visualização de métricas em tempo real</strong>  </li>
+<li><strong>Dado</strong> que o Diretor de TI está logado no sistema.  </li>
+<li><strong>Quando</strong> ele acessa o dashboard de monitoramento.  </li>
+<li><strong>Então</strong> o dashboard deve exibir métricas como tempo de resposta, uso de CPU e memória em tempo real.  </li>
+<li><strong>E</strong> deve mostrar o status de disponibilidade dos principais serviços.  </li>
+<li><strong>Cenário 2: Recebimento de alertas de desempenho</strong>  </li>
+<li><strong>Dado</strong> que um limite de uso de CPU foi pré-definido em 90%.  </li>
+<li><strong>Quando</strong> o uso de CPU do sistema ultrapassa 90%.  </li>
+<li><strong>Então</strong> o sistema deve enviar um alerta automático para o Diretor de TI.</li>
+</ul>
+<h4 id="us12-gerar-relatorios-de-auditoria-e-conformidade_1"><strong>US12: Gerar relatórios de auditoria e conformidade</strong></h4>
+<ul>
+<li><strong>Cenário 1: Geração de relatório de acesso a dados</strong>  </li>
+<li><strong>Dado</strong> que o Diretor de TI precisa auditar o acesso aos dados de um paciente específico.  </li>
+<li><strong>Quando</strong> ele utiliza a função de gerar relatórios de auditoria.  </li>
+<li><strong>E</strong> filtra por um paciente e período específico.  </li>
+<li><strong>Então</strong> o sistema deve gerar um relatório que registre quem acessou, inseriu, alterou ou excluiu os dados daquele paciente, com data e hora.  </li>
+<li><strong>E</strong> o relatório deve ser exportável em PDF e CSV.</li>
+</ul>
+<h4 id="us13-gerenciar-os-perfis-de-acesso-dos-usuarios_1"><strong>US13: Gerenciar os perfis de acesso dos usuários</strong></h4>
+<ul>
+<li><strong>Cenário 1: Acesso restrito para recepcionista</strong>  </li>
+<li><strong>Dado</strong> que um usuário está logado com o perfil "Recepcionista".  </li>
+<li><strong>Quando</strong> ele acessa o prontuário de um paciente.  </li>
+<li><strong>Então</strong> ele NÃO deve ter acesso a informações clínicas detalhadas, como notas de evolução e diagnósticos.  </li>
+<li><strong>Cenário 2: Acesso completo para médico</strong>  </li>
+<li><strong>Dado</strong> que um usuário está logado com o perfil "Médico".  </li>
+<li><strong>Quando</strong> ele acessa o prontuário de um paciente.  </li>
+<li><strong>Então</strong> ele deve ter acesso completo ao prontuário clínico.  </li>
+<li><strong>Mas</strong> NÃO deve ter permissão para gerenciar perfis de outros usuários.  </li>
+<li><strong>Cenário 3: Permissões de Administrador</strong>  </li>
+<li><strong>Dado</strong> que o Diretor de TI está logado com um perfil de administrador.  </li>
+<li><strong>Quando</strong> ele acessa a área de gerenciamento de usuários.  </li>
+<li><strong>Então</strong> ele deve ser capaz de criar, editar ou remover contas de usuário e atribuir perfis.</li>
+</ul>
 
 
 
