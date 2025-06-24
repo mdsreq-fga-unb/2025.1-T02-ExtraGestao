@@ -25,23 +25,28 @@ Adotado conforme recomendações do Scrum
 ### 2.1 Definição de pronto (DoR)
 Uma história de usuário está pronta para desenvolvimento quando:
 
-* Estiver clara, objetiva, entendida e alinhada com o time (evite ambiguidades).
-* Possuir critérios de aceitação objetivos, escritos de maneira colaborativa.
-* Não tiver impedimentos técnicos (acessos, dependências, recursos).
-* Estiver estimada, priorizada e refinada progressivamente (pronta para sprint).
-* Permitir práticas de qualidade (XP, TDD, CI/CD) desde o início.
+* Clara e objetiva: A descrição da história não deixa margem para interpretações ambíguas. “Clara” significa que qualquer membro do time consegue compreendê-la sem dúvidas; “objetiva” significa que o texto é direto e focado no valor a ser entregue, sem rodeios.
+* Possuir critérios de aceitação objetivos, escritos de maneira colaborativa.  Os critérios são criados junto com o Product Owner, desenvolvedores e, se possível, stakeholders. Isso garante que todos tenham o mesmo entendimento sobre quando a história será considerada aceita.
+* Não tiver impedimentos técnicos (acessos, dependências, recursos).  Por exemplo, a equipe tem credenciais, ambientes, APIs e dependências externas resolvidas, evitando bloqueios na execução.
+* Estiver estimada, priorizada e refinada progressivamente (pronta para sprint).  A história passou por sessões de refinamento, está priorizada no backlog e já foi estimada em pontos. O "refinamento progressivo" se refere à prática de ir amadurecendo a história aos poucos até que ela esteja pronta para desenvolvimento.
+* Permite práticas de qualidade desde o início: A história está formulada de modo a permitir práticas como TDD (Test Driven Development), CI/CD (Integração e Entrega Contínua) e técnicas do XP (eXtreme Programming), o que garante qualidade contínua e entrega sustentável.
 
 ### 2.2 Definição de feito (DoD)
 Uma funcionalidade ou tarefa é considerada concluída quando atende a todos os critérios abaixo:
 
 * Atende todos os critérios de aceitação definidos na DoR.
+  Os critérios de aceitação pertencem a cada história de usuário e são definidos no refinamento, geralmente junto ao PO. 
 * Código revisado e aprovado.
+ Antes de ser mergeado, o código passa por revisão entre membros da equipe, garantindo qualidade, padrões de codificação e entendimento coletivo. A validação é feita entre desenvolvedores, com o apoio do PO.
 * Testes automatizados passam no CI/CD.
 * Documentação técnica e de uso foi atualizada.
+  Caso a funcionalidade impacte o uso do sistema, toda a documentação de uso (como o GitPages e demais documentações desenvolvidas durante a disciplina, por exemplo) deve ser atualizada. Caso haja alterações relevantes na lógica ou arquitetura, a documentação técnica também deve refletir essas mudanças.
 * Interface validada (usabilidade, responsividade).
+Funcionalidades com impacto visual devem ser testadas para garantir que estejam responsivas (em diferentes tamanhos de tela) e com boa usabilidade, considerando o público-alvo. O foco aqui é prevenir problemas de acessibilidade e navegação.
 * Mergeada na branch principal e validada em ambiente de homologação.
+Após passar pela revisão e testes, a feature é mergeada na `main` e automaticamente implantada no ambiente de homologação via CI/CD, onde pode ser validada pelo PO antes do release.
 * Sem bugs críticos conhecidos.
-* Validada com o PO/cliente (Sprint Review).
+ Bugs críticos são falhas que impedem o uso da funcionalidade ou causam efeitos colaterais graves em outras áreas do sistema. A funcionalidade não pode ser considerada feita enquanto esses bugs estiverem presentes.
 
 ## 3. Processo de Engenharia de Requisitos
 | Atividade | Prática no Projeto| Técnica |
