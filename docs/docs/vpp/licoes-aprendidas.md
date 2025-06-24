@@ -27,3 +27,10 @@ Melhoria implementada: Através de feedbacks constantes, reuniões frequentes e 
 ### 2: Qualidade das documentações produzidas
 As primeiras versões das documentações apresentaram problemas como falta de clareza, inconsistências e ausência de informações relevantes, o que gerava retrabalho e dúvidas entre os envolvidos.
 Melhoria implementada: Reconhecendo essa fragilidade, revisitamos o processo de documentação com base nos aprendizados anteriores. A equipe reestruturou os documentos, adotou boas práticas de escrita técnica e passou a revisar coletivamente os materiais antes da entrega. Essa mudança elevou significativamente a qualidade e a confiabilidade das documentações geradas.
+
+## Unidade 3
+### 1: Processos ER
+Durante o desenvolvimento do projeto, a equipe enfrentou desafios significativos relacionados ao entendimento dos processos de Engenharia de Requisitos (ER), principalmente devido à alta complexidade do tema. Apesar das dificuldades iniciais e de diversas falhas, foi possível, por meio de revisões, ajustes e trabalho colaborativo, aprimorar a compreensão e, consequentemente, estruturar corretamente os processos necessários.
+
+### 2: MoSCoW
+Outro ponto de aprendizado relevante foi em relação à técnica MoSCoW. No início, houve certa dificuldade em compreender plenamente seus critérios de priorização. No entanto, com o suporte adequado, orientações precisas e a correção dos equívocos, a equipe conseguiu alinhar seu entendimento e aplicar a técnica de forma eficaz ao longo do projeto.
