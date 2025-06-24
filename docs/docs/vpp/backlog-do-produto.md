@@ -38,7 +38,8 @@ Uma funcionalidade ou tarefa é considerada concluída quando atende a todos os 
   Os critérios de aceitação pertencem a cada história de usuário e são definidos no refinamento, geralmente junto ao PO. 
 * Código revisado e aprovado.
  Antes de ser mergeado, o código passa por revisão entre membros da equipe, garantindo qualidade, padrões de codificação e entendimento coletivo. A validação é feita entre desenvolvedores, com o apoio do PO.
-* Testes automatizados passam no CI/CD.
+* Testes automatizados passam no CI/CD. 
+  Toda nova funcionalidade deve conter testes automatizados compatíveis com seu impacto. Não é exigido 100% de cobertura, mas sim cobertura suficiente para garantir que a lógica principal esteja validada por testes de unidade e/ou integração, com execução em pipelines CI/CD.
 * Documentação técnica e de uso foi atualizada.
   Caso a funcionalidade impacte o uso do sistema, toda a documentação de uso (como o GitPages e demais documentações desenvolvidas durante a disciplina, por exemplo) deve ser atualizada. Caso haja alterações relevantes na lógica ou arquitetura, a documentação técnica também deve refletir essas mudanças.
 * Interface validada (usabilidade, responsividade).
