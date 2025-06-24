@@ -21,9 +21,12 @@ nav:
       - "Apresentação 1": vpp/apresentacao.md
 
   - "Estudos de caso":
-      - "PBB": vpp/estudos-de-caso/pbb.md
-      - "USM": vpp/estudos-de-caso/usm.md
+      - "PBB": estudos-de-caso/pbb.md
+      - "USM": estudos-de-caso/usm.md
 
+  
+  - "Protótipo":
+      - "Protótipo de Alta Fidelidade": prototipos/prototipoAlta.md
   
 
 
