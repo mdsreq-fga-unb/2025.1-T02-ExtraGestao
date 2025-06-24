@@ -25,7 +25,7 @@ export default function ProjetoDetalhesModal({
             <div className="bg-[#1e213d] rounded-2xl p-8 w-[95vw] max-w-md shadow-2xl">
                 <div className="flex justify-between mb-3">
                     <h2 className="text-2xl font-bold text-white">{projeto.nome}</h2>
-                    <button onClick={onClose} className="text-gray-300 text-xl">&times;</button>
+                    <button onClick={onClose} className="text-gray-300 text-xl cursor-pointer">&times;</button>
                 </div>
                 <div className="flex flex-col items-center gap-4">
                     <div className="w-32 h-32 rounded-lg overflow-hidden bg-white flex items-center justify-center mb-2">
