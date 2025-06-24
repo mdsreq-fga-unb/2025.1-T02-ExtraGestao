@@ -1,22 +1,22 @@
-import {Injectable, UnauthorizedException} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import {PrismaService} from "../prisma/prisma.service";
-import {LoginDTO, RegisterDTO} from "./auth.dto";
+import { PrismaService } from "../prisma/prisma.service";
+import { LoginDTO, RegisterDTO } from "./auth.dto";
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-    constructor (
+    constructor(
         private readonly jwtService: JwtService,
         private readonly prisma: PrismaService
-    ) {}
+    ) { }
 
     async validateUser(authPayload: LoginDTO): Promise<any> {
         const user = await this.prisma.usuario.findUnique({
-            where: { NOME_USUARIO: authPayload.NOME_USUARIO }
+            where: { email: authPayload.email },
         });
 
-        if (user && await bcrypt.compare(authPayload.SENHA, user.SENHA)) {
+        if (user && await bcrypt.compare(authPayload.senha, user.hash_senha)) {
             return user;
         }
 
@@ -30,24 +30,48 @@ export class AuthService {
             throw new UnauthorizedException('Invalid credentials');
         }
 
-        const payload = { username: user.NOME_USUARIO, sub: user.IDUSUARIO, role: user.FUNCAO };
+        const payload = {
+            sub: user.idusuario,
+            username: user.nome,
+            role: user.papel,
+        }
+
         return {
             access_token: this.jwtService.sign(payload),
-        };
+            username: user.nome,
+            role: user.papel,
+            sub: user.idusuario,
+        }
     }
 
     async register(registerPayload: RegisterDTO) {
-        const hashedPassword = await bcrypt.hash(registerPayload.SENHA, 10);
+        const hashedPassword = await bcrypt.hash(registerPayload.senha, 10);
+
+        if (registerPayload.papel !== 'gestor' && registerPayload.papel !== 'usuario' && registerPayload.papel !== 'usuario/gestor') {
+            throw new UnauthorizedException('Invalid role');
+        }
+        let usuario_tipo = 0;
+        if (registerPayload.papel === 'gestor') {
+            usuario_tipo = 1;
+        } else if (registerPayload.papel === 'usuario') {
+            usuario_tipo = 2;
+        }
+        else {
+            usuario_tipo = 0;
+        }
 
         return this.prisma.usuario.create({
             data: {
-                NOME_USUARIO: registerPayload.NOME_USUARIO,
-                SENHA: hashedPassword,
-                FUNCAO: registerPayload.FUNCAO
+                nome: registerPayload.nome,
+                hash_senha: hashedPassword,
+                papel: registerPayload.papel,
+                cpf: registerPayload.cpf,
+                email: registerPayload.email,
+                usuario_tipo: usuario_tipo
             },
-            select:{
-                NOME_USUARIO: true,
-                FUNCAO: true
+            select: {
+                nome: true,
+                papel: true
             }
         })
     }

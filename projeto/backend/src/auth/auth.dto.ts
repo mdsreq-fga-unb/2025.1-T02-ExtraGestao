@@ -1,15 +1,17 @@
-export class LoginDTO{
-    NOME_USUARIO: string;
-    SENHA: string;
+export class RegisterDTO {
+    cpf: string;
+    nome: string;
+    email: string;
+    senha: string;
+    papel: string;
 }
 
-export class RegisterDTO{
-    NOME_USUARIO: string;
-    SENHA: string;
-    FUNCAO: string;
+export class LoginDTO {
+    email: string;
+    senha: string;
 }
 
-export class JwtPayload{
+export class JwtPayload {
     sub: number;
     username: string;
     role: string;
