@@ -20,8 +20,9 @@ nav:
   - "Apresentações":
       - "Apresentação 1": vpp/apresentacao.md
 
-  - "Lições Aprendidas":
-      - "Lições Aprendidas": vpp/licoes-aprendidas.md
+  - "Estudos de caso":
+      - "PBB": vpp/estudos-de-caso/pbb.md
+      - "USM": vpp/estudos-de-caso/usm.md
 
   
 

@@ -1,2 +1,4 @@
 env/
 docs/site/
+dist/
+node_modules/
