@@ -27,6 +27,13 @@ nav:
       - "PBB": estudos-de-caso/pbb.md
       - "USM": estudos-de-caso/usm.md
 
+  - "Pautas":
+      - "Pauta 1": pautas/pauta1.md
+      - "Pauta 2": pautas/pauta2.md
+      - "Pauta 3": pautas/pauta3.md
+      - "Pauta 4": pautas/pauta4.md
+      - "Pauta 5": pautas/pauta5.md
+
   
   - "Protótipo":
       - "Protótipo de Alta Fidelidade": prototipos/prototipoAlta.md
