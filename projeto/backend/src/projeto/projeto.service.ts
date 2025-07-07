@@ -54,8 +54,27 @@ export class ProjetoService {
     }
 
     async findAll() {
-        return this.prisma.projeto.findMany();
+        const projetos = await this.prisma.projeto.findMany({
+            include: {
+                gestor: {
+                    select: { nome: true }
+                }
+            }
+        });
+
+        return projetos.map(p => ({
+            idprojeto: p.idprojeto,
+            nome: p.nome,
+            valor: p.valor,
+            data_inicio: p.data_inicio,
+            prazo: p.prazo,
+            status: p.status,
+            descricao: p.descricao,
+            foto: p.foto,
+            nome_gestor: p.gestor?.nome ?? null
+        }));
     }
+
 
     @UseGuards(JwtAuthGuardUser)
     async findById(id: number) {

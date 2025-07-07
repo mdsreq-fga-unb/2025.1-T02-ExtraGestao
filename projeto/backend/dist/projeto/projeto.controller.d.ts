@@ -45,7 +45,7 @@ export declare class ProjetoController {
         prazo: Date;
         status: string;
         descricao: string;
-        id_gestor: number;
+        nome_gestor: string;
     }[]>;
     getProjetoById(id: number): Promise<{
         idprojeto: number;

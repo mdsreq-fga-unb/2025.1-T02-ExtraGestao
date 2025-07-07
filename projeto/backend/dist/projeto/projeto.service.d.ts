@@ -45,7 +45,7 @@ export declare class ProjetoService {
         status: string;
         descricao: string;
         foto: Buffer;
-        id_gestor: number;
+        nome_gestor: string;
     }[]>;
     findById(id: number): Promise<{
         idprojeto: number;

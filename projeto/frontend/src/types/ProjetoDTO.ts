@@ -5,7 +5,7 @@ export interface ProjetoDTO {
     data_inicio: string;
     prazo: string;
     descricao: string;
-    id_gestor: number;
+    nome_gestor: string;
     status: "EM_ANDAMENTO" | "CONCLUIDO";
     foto: string;
 };

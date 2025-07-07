@@ -41,7 +41,7 @@ export default function ProjetoDetalhesModal({
                         <div><b>Data início:</b> {new Date(projeto.data_inicio).toLocaleDateString()}</div>
                         <div><b>Prazo:</b> {new Date(projeto.prazo).toLocaleDateString()}</div>
                         <div><b>Valor:</b> R$ {Number(projeto.valor).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</div>
-                        <div><b>Gestor:</b> {projeto.id_gestor}</div>
+                        <div><b>Gestor:</b> {projeto.nome_gestor}</div>
                     </div>
                 </div>
                 {isGestor || isGestorUsuario && (

@@ -14,7 +14,7 @@ type ProjetoDTO = {
     data_inicio: string;
     prazo: string;
     descricao: string;
-    id_gestor: number;
+    nome_gestor: string;
     status: "EM_ANDAMENTO" | "CONCLUIDO";
     foto: string;
 };
@@ -260,7 +260,6 @@ export default function Home() {
             </Header>
             <div className="max-w-[95vw] mx-auto mt-4 bg-[#120d23] rounded-xl border-2 border-blue-500 p-8">
                 <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-white text-lg font-mono">Projetos</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 place-items-center">
                     {projetos.map((p) => (
