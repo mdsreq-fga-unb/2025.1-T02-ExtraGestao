@@ -21,5 +21,8 @@ O protótipo de alta fidelidade foi desenvolvido utilizando o Figma, uma ferrame
 ![US07](../assets/us07-visualizar.png)
 ![US07](../assets/us07-detalhes.png)
 
+#### US11:
+![US11](../assets/us11-alterarstatus.png)
+
 
 
