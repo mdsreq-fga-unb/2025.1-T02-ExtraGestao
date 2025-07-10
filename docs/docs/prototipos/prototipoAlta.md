@@ -13,6 +13,9 @@ O protótipo de alta fidelidade foi desenvolvido utilizando o Figma, uma ferrame
 #### US02:
 ![US02](../assets/us02-login.png)
 
+#### US04:
+![US04](../assets/us04-logout.png)
+
 #### US06:
 ![US06](../assets/us06-criarprojeto.png)
 ![US06](../assets/us06-editarprojeto.png)
@@ -20,6 +23,10 @@ O protótipo de alta fidelidade foi desenvolvido utilizando o Figma, uma ferrame
 #### US07:
 ![US07](../assets/us07-visualizar.png)
 ![US07](../assets/us07-detalhes.png)
+
+#### US08:
+![US08](../assets/us08-novatarefa.png)
+![US08](../assets/us08-detalhartarefa.png)
 
 #### US11:
 ![US11](../assets/us11-alterarstatus.png)
