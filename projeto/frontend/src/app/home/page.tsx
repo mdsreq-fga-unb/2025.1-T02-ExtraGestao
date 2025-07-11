@@ -6,6 +6,9 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import ProjetoDetalhesModal from "@/components/ProjetoDetalhesModal";
 import EditarProjetoModal from "@/components/EditarProjetoModal";
+import { useRouter } from "next/navigation";
+
+
 
 type ProjetoDTO = {
     idprojeto: number;
@@ -161,6 +164,8 @@ export default function Home() {
     const [projetoParaEditar, setProjetoParaEditar] = useState<ProjetoDTO | null>(null);
     const [loadingUpdate, setLoadingUpdate] = useState(false);
 
+    const router = useRouter();
+
     const handleUpdateProjeto = async (id: number, formData: FormData) => {
         setLoadingUpdate(true);
         try {
@@ -264,7 +269,9 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 place-items-center">
                     {projetos.map((p) => (
                         <div key={p.idprojeto} className="flex flex-col items-center">
-                            <div className="w-40 h-40 rounded-2xl shadow-lg overflow-hidden mb-2 bg-white flex items-center justify-center">
+                            <div className="w-40 h-40 rounded-2xl shadow-lg overflow-hidden mb-2 bg-white flex items-center justify-center cursor-pointer hover:bg-blue-950 transition"
+                                onClick={() => router.push(`/tarefas/${p.idprojeto}`)}
+                                title="Ver tarefas do projeto">
                                 {p.foto ? (
                                     <Image
                                         src={p.foto || "/logo-extra.svg"}

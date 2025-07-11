@@ -33,7 +33,18 @@ export declare class TarefaService {
         id_projeto: number | null;
         id_gestor: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
-    findAll(): import(".prisma/client").Prisma.PrismaPromise<{
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<({
+        gestor: {
+            nome: string;
+            idusuario: number;
+        };
+        responsavel_tarefa: {
+            usuario: {
+                nome: string;
+                idusuario: number;
+            };
+        }[];
+    } & {
         idtarefa: number;
         nome: string;
         data_inicio: Date;
@@ -42,7 +53,7 @@ export declare class TarefaService {
         descricao: string;
         id_projeto: number | null;
         id_gestor: number | null;
-    }[]>;
+    })[]>;
     findById(id: string): import(".prisma/client").Prisma.Prisma__tarefaClient<{
         idtarefa: number;
         nome: string;
@@ -53,4 +64,8 @@ export declare class TarefaService {
         id_projeto: number | null;
         id_gestor: number | null;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
+    addResponsavel(id: string, responsavelId: string): Promise<{
+        id_usuario: number;
+        id_tarefa: number;
+    }>;
 }

@@ -33,4 +33,8 @@ export class TarefaController {
         return this.tarefaService.findById(id);
     }
 
+    @Post('addResponsavel/:id')
+    async addResponsavel(@Param('id') id: string, @Body('responsavelId') responsavelId: string) {
+        return this.tarefaService.addResponsavel(id, responsavelId);
+    }
 }

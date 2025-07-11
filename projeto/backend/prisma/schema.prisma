@@ -44,7 +44,7 @@ model tarefa {
     nome               String               @db.VarChar(50)
     data_inicio        DateTime             @db.Date
     prazo              DateTime             @db.Date
-    status             String               @default("Em andamento") @db.VarChar(90)
+    status             String               @default("A fazer") @db.VarChar(90)
     descricao          String               @db.VarChar(1000)
     id_projeto         Int?
     id_gestor          Int?

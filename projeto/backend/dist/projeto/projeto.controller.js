@@ -52,7 +52,7 @@ let ProjetoController = class ProjetoController {
         }));
     }
     getProjetoById(id) {
-        return this.projetoService.findById(id);
+        return this.projetoService.findById(Number(id));
     }
     associateProjeto(associateDto) {
         const { id_projeto, id_usuario } = associateDto;

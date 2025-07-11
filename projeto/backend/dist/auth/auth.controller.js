@@ -26,6 +26,9 @@ let AuthController = class AuthController {
     register(authPayload) {
         return this.authService.register(authPayload);
     }
+    listUsers() {
+        return this.authService.listUsers();
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -42,6 +45,12 @@ __decorate([
     __metadata("design:paramtypes", [auth_dto_1.RegisterDTO]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "register", null);
+__decorate([
+    (0, common_1.Get)('list'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "listUsers", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

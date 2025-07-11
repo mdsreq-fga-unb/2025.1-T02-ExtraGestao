@@ -33,7 +33,18 @@ export declare class TarefaController {
         id_projeto: number | null;
         id_gestor: number | null;
     }>;
-    listTarefas(): Promise<{
+    listTarefas(): Promise<({
+        gestor: {
+            nome: string;
+            idusuario: number;
+        };
+        responsavel_tarefa: {
+            usuario: {
+                nome: string;
+                idusuario: number;
+            };
+        }[];
+    } & {
         idtarefa: number;
         nome: string;
         data_inicio: Date;
@@ -42,7 +53,7 @@ export declare class TarefaController {
         descricao: string;
         id_projeto: number | null;
         id_gestor: number | null;
-    }[]>;
+    })[]>;
     getTarefaById(id: string): Promise<{
         idtarefa: number;
         nome: string;
@@ -52,5 +63,9 @@ export declare class TarefaController {
         descricao: string;
         id_projeto: number | null;
         id_gestor: number | null;
+    }>;
+    addResponsavel(id: string, responsavelId: string): Promise<{
+        id_usuario: number;
+        id_tarefa: number;
     }>;
 }

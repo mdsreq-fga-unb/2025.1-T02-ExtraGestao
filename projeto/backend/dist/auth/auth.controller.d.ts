@@ -13,4 +13,11 @@ export declare class AuthController {
         nome: string;
         papel: string;
     }>;
+    listUsers(): Promise<{
+        idusuario: number;
+        cpf: string;
+        nome: string;
+        email: string;
+        papel: string;
+    }[]>;
 }

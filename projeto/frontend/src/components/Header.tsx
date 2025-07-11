@@ -1,21 +1,30 @@
 "use client";
 
 import { useSession, signOut } from "next-auth/react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface HeaderProps {
     title?: string;
     className?: string;
     children?: React.ReactNode;
+    pagina?: string;
 }
 
 export default function Header({ title = "Home", className = "", children }: HeaderProps) {
     const { data: session } = useSession();
 
+    const Router = useRouter();
+
     return (
-        <header className={`w-full flex items-center justify-between px-10 py-4 bg-[#22242b] border-b-2 border-blue-500 ${className}`}>
+        <><header className={`w-full flex items-center justify-between px-10 py-4 bg-[#070424] border-b-2 border-blue-500 ${className}`}>
             <div className="flex items-center gap-3">
-                <h1 className="text-blue-400 text-2xl font-mono">{title}</h1>
+                <h1 className="font-chakra text-blue-400 text-2xl">{title}</h1>
                 {children}
+            </div>
+            <div className="flex items-center gap-3"
+                onClick={() => Router.push("/home")}>
+                <Image src="/home.svg" alt="home" width={40} height={40} className="w-13 h-13 cursor-pointer" />
             </div>
             <div className="flex items-center gap-3">
                 <span className="text-white">{session?.user?.name || "Usuário"}</span>
@@ -36,6 +45,7 @@ export default function Header({ title = "Home", className = "", children }: Hea
                     <span className="hidden sm:inline">Sair</span>
                 </button>
             </div>
-        </header>
+        </header >
+        </>
     );
 }

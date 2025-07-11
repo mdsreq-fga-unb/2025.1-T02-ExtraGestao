@@ -23,4 +23,5 @@ export declare class TarefaDTO {
     descricao: string;
     id_gestor: number;
     id_projeto: number;
+    nome_gestor?: string;
 }

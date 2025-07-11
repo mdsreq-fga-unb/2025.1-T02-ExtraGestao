@@ -16,4 +16,11 @@ export declare class AuthService {
         nome: string;
         papel: string;
     }>;
+    listUsers(): Promise<{
+        idusuario: number;
+        cpf: string;
+        nome: string;
+        email: string;
+        papel: string;
+    }[]>;
 }

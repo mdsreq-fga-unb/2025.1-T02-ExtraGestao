@@ -58,7 +58,8 @@ export class ProjetoController {
 
     @Get('/:id')
     getProjetoById(@Param('id') id: number) {
-        return this.projetoService.findById(id);
+
+        return this.projetoService.findById(Number(id));
     }
 
     @Post('associate')

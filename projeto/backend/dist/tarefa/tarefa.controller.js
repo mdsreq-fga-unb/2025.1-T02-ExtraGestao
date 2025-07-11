@@ -36,6 +36,9 @@ let TarefaController = class TarefaController {
     async getTarefaById(id) {
         return this.tarefaService.findById(id);
     }
+    async addResponsavel(id, responsavelId) {
+        return this.tarefaService.addResponsavel(id, responsavelId);
+    }
 };
 exports.TarefaController = TarefaController;
 __decorate([
@@ -74,6 +77,14 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TarefaController.prototype, "getTarefaById", null);
+__decorate([
+    (0, common_1.Post)('addResponsavel/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)('responsavelId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], TarefaController.prototype, "addResponsavel", null);
 exports.TarefaController = TarefaController = __decorate([
     (0, common_1.Controller)('tarefa'),
     __metadata("design:paramtypes", [tarefa_service_1.TarefaService])

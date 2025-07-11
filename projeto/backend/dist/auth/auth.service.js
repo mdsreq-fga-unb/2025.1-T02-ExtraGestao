@@ -75,6 +75,17 @@ let AuthService = class AuthService {
             }
         });
     }
+    async listUsers() {
+        return this.prisma.usuario.findMany({
+            select: {
+                idusuario: true,
+                nome: true,
+                papel: true,
+                email: true,
+                cpf: true
+            }
+        });
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

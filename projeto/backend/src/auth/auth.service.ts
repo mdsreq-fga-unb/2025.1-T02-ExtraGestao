@@ -75,4 +75,16 @@ export class AuthService {
             }
         })
     }
+
+    async listUsers() {
+        return this.prisma.usuario.findMany({
+            select: {
+                idusuario: true,
+                nome: true,
+                papel: true,
+                email: true,
+                cpf: true
+            }
+        });
+    }
 }

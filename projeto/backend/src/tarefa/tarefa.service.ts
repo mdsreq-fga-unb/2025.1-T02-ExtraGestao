@@ -35,6 +35,12 @@ export class TarefaService {
         return tarefa;
     }
     update(id: string, updateTarefaDto: UpdateTarefaDTO) {
+        if (updateTarefaDto.data_inicio) {
+            updateTarefaDto.data_inicio = new Date(updateTarefaDto.data_inicio);
+        }
+        if (updateTarefaDto.prazo) {
+            updateTarefaDto.prazo = new Date(updateTarefaDto.prazo);
+        }
         return this.prismaService.tarefa.update({
             where: { idtarefa: Number(id) },
             data: updateTarefaDto,
@@ -46,7 +52,28 @@ export class TarefaService {
         });
     }
     findAll() {
-        return this.prismaService.tarefa.findMany();
+        return this.prismaService.tarefa.findMany(
+            {
+                include: {
+                    responsavel_tarefa: {
+                        select: {
+                            usuario: {
+                                select: {
+                                    idusuario: true,
+                                    nome: true,
+                                }
+                            }
+                        }
+                    },
+                    gestor: {
+                        select: {
+                            idusuario: true,
+                            nome: true,
+                        }
+                    }
+                }
+            }
+        );
     }
     findById(id: string) {
         return this.prismaService.tarefa.findUnique({
@@ -54,4 +81,12 @@ export class TarefaService {
         });
     }
 
+    async addResponsavel(id: string, responsavelId: string) {
+        return this.prismaService.responsavel_tarefa.create({
+            data: {
+                id_tarefa: Number(id),
+                id_usuario: Number(responsavelId),
+            }
+        });
+    }
 }
