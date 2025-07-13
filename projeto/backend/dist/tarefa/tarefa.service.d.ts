@@ -34,16 +34,16 @@ export declare class TarefaService {
         id_gestor: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
-        gestor: {
-            nome: string;
-            idusuario: number;
-        };
         responsavel_tarefa: {
             usuario: {
-                nome: string;
                 idusuario: number;
+                nome: string;
             };
         }[];
+        gestor: {
+            idusuario: number;
+            nome: string;
+        };
     } & {
         idtarefa: number;
         nome: string;

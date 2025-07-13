@@ -242,12 +242,14 @@ const EditarTarefaModal: React.FC<EditarTarefaModalProps> = ({ open, tarefa, onC
 
 
 export default function KanbanTarefas({ token, usuarios, idProjeto }: KanbanTarefasProps) {
+    const [ordenacao, setOrdenacao] = useState<"data" | "nome">("data");
     const [modalEditar, setModalEditar] = useState(false);
     const [modalNova, setModalNova] = useState(false);
     const [modalDetalhe, setModalDetalhe] = useState(false);
     const [tarefaDetalhe, setTarefaDetalhe] = useState<Tarefa | null>(null);
     const [reload, setReload] = useState(false);
     const [nomeProjeto, setNomeProjeto] = useState("Projeto");
+    const [responsavelId, setResponsavelId] = useState<number | null>(null);
 
     const { tarefas } = useTarefas(token, idProjeto, [reload, modalNova, modalDetalhe]) as { tarefas: Tarefa[] };
 
@@ -317,6 +319,23 @@ export default function KanbanTarefas({ token, usuarios, idProjeto }: KanbanTare
         fetchNomeProjeto();
     }, [idProjeto, token]);
 
+    function getTarefasFiltradas(status: string) {
+        return tarefas
+            .filter(t => t.status === status)
+            .filter(t =>
+                !responsavelId ||
+                (t.responsavel_tarefa && t.responsavel_tarefa.some(r => r.usuario.idusuario === responsavelId))
+            )
+            .sort((a, b) => {
+                if (ordenacao === "data") {
+                    return new Date(a.data_inicio).getTime() - new Date(b.data_inicio).getTime();
+                } else {
+                    return a.nome.localeCompare(b.nome);
+                }
+            });
+    }
+
+
     const handleAddResponsavel = async (idUsuario: number) => {
         if (!tarefaDetalhe) return;
         try {
@@ -341,17 +360,45 @@ export default function KanbanTarefas({ token, usuarios, idProjeto }: KanbanTare
             <Header
                 title={`Tarefas do ${nomeProjeto}`}
                 className="flex w-full" />
-            <div className="p-6 flex items-center justify-between">
-                <button className="font-chakra bg-blue-700 px-6 py-2 rounded-xl text-lg text-white cursor-pointer mt-[-10px] mb-[-10px]" onClick={() => setModalNova(true)}>
-                    Adicionar tarefa
-                </button>
+            <div className="flex items-center gap-4 p-4 bg-[#181a23] text-white">
+
+                <div className="p-6 flex items-center justify-between">
+                    <button className="font-chakra bg-blue-700 px-6 py-2 rounded-xl text-lg text-white cursor-pointer mt-[-10px] mb-[-10px]" onClick={() => setModalNova(true)}>
+                        Adicionar tarefa
+                    </button>
+                </div>
+                <div className="flex items-center gap-4">
+                    {/* Filtro por Status */}
+                    <select
+                        className="p-2 rounded border border-gray-400 text-white"
+                        value={responsavelId || ""}
+                        onChange={e => setResponsavelId(e.target.value ? Number(e.target.value) : null)}
+                    >
+                        <option value="">Todos os responsáveis</option>
+                        {usuarios.map(u => (
+                            <option key={u.idusuario} value={u.idusuario}>{u.nome}</option>
+                        ))}
+                    </select>
+
+                    {/* Ordenação */}
+                    <label className="text-white ml-2">Ordenar por:</label>
+                    <select
+                        className="p-2 rounded border border-gray-400 text-white"
+                        value={ordenacao}
+                        onChange={e => setOrdenacao(e.target.value as "data" | "nome")}
+                    >
+                        <option value="data">Data</option>
+                        <option value="nome">Nome</option>
+                    </select>
+                </div>
             </div>
+
             <div className="flex flex-1 gap-3 overflow-x-auto px-4">
                 {STATUS_COLUNAS.map((status, idx) => (
                     <div key={status} className={`flex-1 min-w-[260px] ${idx !== 0 ? 'border-l-4 border-blue-700' : ''} px-2`}>
                         <div className="text-xl mb-2 ml-23 font-bold text-white">{status}</div>
                         <div className="flex flex-col gap-6">
-                            {tarefas.filter((t) => t.status === status).map((t) => (
+                            {getTarefasFiltradas(status).map((t) => (
                                 <div key={t.idtarefa} className="flex flex-col items-center">
                                     <div className="cursor-pointer w-full flex justify-center ml-5">
                                         <TarefaCard tarefa={t} status={status}

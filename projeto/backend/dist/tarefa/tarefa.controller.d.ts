@@ -34,16 +34,16 @@ export declare class TarefaController {
         id_gestor: number | null;
     }>;
     listTarefas(): Promise<({
-        gestor: {
-            nome: string;
-            idusuario: number;
-        };
         responsavel_tarefa: {
             usuario: {
-                nome: string;
                 idusuario: number;
+                nome: string;
             };
         }[];
+        gestor: {
+            idusuario: number;
+            nome: string;
+        };
     } & {
         idtarefa: number;
         nome: string;
