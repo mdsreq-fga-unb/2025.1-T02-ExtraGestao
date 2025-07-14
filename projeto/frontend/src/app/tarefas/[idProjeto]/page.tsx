@@ -1,14 +1,12 @@
 'use client';
 
+import { useParams } from "next/navigation";
 import KanbanTarefas, { Usuario } from "../../../components/KanbanTarefas";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-type PageParams = {
-    idProjeto: string;
-};
-
-export default function Page({ params }: { params: PageParams }) {
+export default function Page() {
+    const params = useParams();
     const idProjeto = Number(params.idProjeto);
     const { data: session } = useSession();
     const token = String(session?.accessToken || session?.user?.id || "");
@@ -32,7 +30,6 @@ export default function Page({ params }: { params: PageParams }) {
 
     useEffect(() => {
         fetchUsuarios();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     if (!idProjeto || !token) return null;
