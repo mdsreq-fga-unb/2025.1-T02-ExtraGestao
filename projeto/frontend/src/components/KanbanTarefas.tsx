@@ -185,8 +185,12 @@ const NovaTarefaModal: React.FC<NovaTarefaModalProps> = ({ open, onClose, onCrea
                         setTitulo(""); setDescricao(""); setDataInicio(""); setPrazo("");
                     }}
                 >
-                    <input required placeholder="Título da tarefa" className="p-2 rounded border border-gray-400 text-black" value={titulo} onChange={e => setTitulo(e.target.value)} />
-                    <textarea required placeholder="Descrição" className="p-2 rounded border border-gray-400 text-black min-h-[100px]" value={descricao} onChange={e => setDescricao(e.target.value)} />
+                    <input required placeholder="Título da tarefa"
+                        maxLength={50}
+                        className="p-2 rounded border border-gray-400 text-black" value={titulo} onChange={e => setTitulo(e.target.value)} />
+                    <textarea required placeholder="Descrição"
+                        maxLength={1000}
+                        className="p-2 rounded border border-gray-400 text-black min-h-[100px]" value={descricao} onChange={e => setDescricao(e.target.value)} />
                     <input type="date" required className="p-2 rounded border border-gray-400 text-black" value={dataInicio} onChange={e => setDataInicio(e.target.value)} />
                     <input type="date" required className="p-2 rounded border border-gray-400 text-black" value={prazo} onChange={e => setPrazo(e.target.value)} />
                     <div className="flex justify-end gap-2 mt-2">
@@ -334,8 +338,12 @@ const EditarTarefaModal: React.FC<EditarTarefaModalProps> = ({ open, tarefa, onC
                         });
                     }}
                 >
-                    <input required placeholder="Título da tarefa" className="p-2 rounded border border-gray-400 text-black" value={titulo} onChange={e => setTitulo(e.target.value)} />
-                    <textarea required placeholder="Descrição" className="p-2 rounded border border-gray-400 text-black min-h-[100px]" value={descricao} onChange={e => setDescricao(e.target.value)} />
+                    <input required placeholder="Título da tarefa"
+                        maxLength={50}
+                        className="p-2 rounded border border-gray-400 text-black" value={titulo} onChange={e => setTitulo(e.target.value)} />
+                    <textarea required placeholder="Descrição"
+                        maxLength={1000}
+                        className="p-2 rounded border border-gray-400 text-black min-h-[100px]" value={descricao} onChange={e => setDescricao(e.target.value)} />
                     <input type="date" required className="p-2 rounded border border-gray-400 text-black" value={dataInicio} onChange={e => setDataInicio(e.target.value)} />
                     <input type="date" required className="p-2 rounded border border-gray-400 text-black" value={prazo} onChange={e => setPrazo(e.target.value)} />
                     <div className="flex justify-end gap-2 mt-2">

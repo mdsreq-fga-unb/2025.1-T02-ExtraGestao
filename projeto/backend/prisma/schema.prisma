@@ -9,7 +9,7 @@ generator client {
 
 model usuario {
     idusuario    Int    @id @default(autoincrement())
-    cpf          String @unique
+    cpf          String @unique @db.Char(11)
     nome         String @db.VarChar(50)
     hash_senha   String @db.VarChar(255)
     email        String @unique @db.VarChar(100)

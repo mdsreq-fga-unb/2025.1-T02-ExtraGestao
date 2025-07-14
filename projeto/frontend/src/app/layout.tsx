@@ -8,6 +8,15 @@ const chakraPetch = Chakra_Petch({
   variable: "--font-chakra-petch",
 });
 
+export const metadata = {
+  title: {
+    default: "Extra Software",
+    template: "%s | Extra Software"
+  },
+  description: "Gestão de projetos e tarefas - Extra Software.",
+};
+
+
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["400", "700"],

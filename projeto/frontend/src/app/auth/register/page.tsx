@@ -5,6 +5,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+export const metadata = {
+    title: 'Registro | Extra Software',
+    description: 'Crie uma conta no Extra Software.',
+};
+
 export default function Register() {
     const formatCpf = (cpf: string) => {
         return cpf
@@ -156,9 +161,10 @@ export default function Register() {
                             )}
                             <input
                                 type="text"
-                                placeholder="Nome completo"
+                                placeholder="Nome"
                                 className="rounded-lg px-4 py-2 bg-white/90 text-black text-lg font-mono outline-none focus:ring-2 focus:ring-[#1976FF] transition w-full"
                                 value={nome}
+                                maxLength={50}
                                 onChange={e => setNome(e.target.value)}
                                 required
                             />
@@ -167,6 +173,7 @@ export default function Register() {
                                 placeholder="E-mail"
                                 className="rounded-lg px-4 py-2 bg-white/90 text-black text-lg font-mono outline-none focus:ring-2 focus:ring-[#1976FF] transition w-full"
                                 value={email}
+                                maxLength={100}
                                 onChange={e => setEmail(e.target.value)}
                                 required
                             />
@@ -176,6 +183,7 @@ export default function Register() {
                                 className="rounded-lg px-4 py-2 bg-white/90 text-black text-lg font-mono outline-none focus:ring-2 focus:ring-[#1976FF] transition w-full"
                                 autoComplete="new-password"
                                 value={senha}
+                                maxLength={50}
                                 onChange={e => setSenha(e.target.value)}
                                 required
                             />
@@ -185,6 +193,7 @@ export default function Register() {
                                 className="rounded-lg px-4 py-2 bg-white/90 text-black text-lg font-mono outline-none focus:ring-2 focus:ring-[#1976FF] transition w-full"
                                 autoComplete="new-password"
                                 value={senhaRepetida}
+                                maxLength={50}
                                 onChange={e => setSenhaRepetida(e.target.value)}
                                 required
                             />

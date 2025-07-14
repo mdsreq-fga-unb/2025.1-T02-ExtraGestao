@@ -8,8 +8,6 @@ import ProjetoDetalhesModal from "@/components/ProjetoDetalhesModal";
 import EditarProjetoModal from "@/components/EditarProjetoModal";
 import { useRouter } from "next/navigation";
 
-
-
 type ProjetoDTO = {
     idprojeto: number;
     nome: string;
@@ -76,6 +74,7 @@ function NovoProjetoModal({
                         placeholder="Nome do projeto"
                         className="rounded px-3 py-2 bg-[#0B0B1E] text-white border border-gray-700"
                         value={nome}
+                        maxLength={50}
                         onChange={(e) => setNome(e.target.value)}
                         required
                     />
@@ -84,6 +83,7 @@ function NovoProjetoModal({
                         placeholder="Descrição"
                         className="rounded px-3 py-2 bg-[#0B0B1E] text-white border border-gray-700"
                         value={descricao}
+                        maxLength={1000}
                         onChange={(e) => setDescricao(e.target.value)}
                         required
                     />
@@ -92,6 +92,9 @@ function NovoProjetoModal({
                         placeholder="Valor"
                         className="rounded px-3 py-2 bg-[#0B0B1E] text-white border border-gray-700"
                         value={valor}
+                        min="0"
+                        step="0.01"
+                        max={99999999}
                         onChange={(e) => setValor(e.target.value)}
                         required
                     />

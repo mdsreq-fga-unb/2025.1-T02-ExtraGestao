@@ -42,16 +42,24 @@ function normalizaRole(role: string | undefined | null): string {
 }
 
 export default function UsuariosPage() {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     const token = session?.accessToken || "";
 
-    if (session?.user?.role !== "gestor" && session?.user?.role !== "usuario/gestor") {
-        redirect("/aviso-adm?from=/adm");
-    }
+    useEffect(() => {
+        if (status === "loading") return;
+
+        if (
+            status === "authenticated" &&
+            session?.user?.role !== "gestor" &&
+            session?.user?.role !== "usuario/gestor"
+        ) {
+            redirect("/aviso-adm?from=/adm");
+        }
+    }, [session, status]);
 
     const fetchUsuarios = async () => {
         setLoading(true);

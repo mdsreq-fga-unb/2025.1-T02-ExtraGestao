@@ -1,12 +1,14 @@
 'use client';
 
-import { useParams } from "next/navigation";
 import KanbanTarefas, { Usuario } from "../../../components/KanbanTarefas";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-export default function Page() {
-    const params = useParams();
+type PageParams = {
+    idProjeto: string;
+};
+
+export default function Page({ params }: { params: PageParams }) {
     const idProjeto = Number(params.idProjeto);
     const { data: session } = useSession();
     const token = String(session?.accessToken || session?.user?.id || "");
