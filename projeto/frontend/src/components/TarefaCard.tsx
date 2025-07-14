@@ -30,6 +30,9 @@ export default function TarefaCard({ tarefa, status, onDetalhe, onReload }: Tare
             ? session.user.id
             : "";
 
+    const canConclude =
+        session?.user.role === "gestor" || session?.user.role === "usuario/gestor";
+
     const handleChangeStatus = async (id: number, novoStatus: string, token: string) => {
         await handleChangeStatusTarefa(token, id, novoStatus, onReload);
     };
@@ -134,12 +137,17 @@ export default function TarefaCard({ tarefa, status, onDetalhe, onReload }: Tare
             {status === "Em validação" && (
                 <div className="flex justify-center z-10">
                     <button
-                        className="w-14 h-14 bg-green-500 rounded-b-full hover:bg-green-800 shadow border-4 border-black flex items-center justify-center cursor-pointer"
-                        title="Mover para Concluído"
+                        className={`w-14 h-14 bg-green-500 rounded-b-full shadow border-4 border-black flex items-center justify-center cursor-pointer
+    ${canConclude ? "hover:bg-green-800" : "opacity-50 cursor-not-allowed"}
+  `}
+                        title={canConclude ? "Mover para Concluído" : "Apenas gestores podem concluir tarefas"}
                         onClick={() => {
-                            handleConcluir(token);
+                            if (canConclude && window.confirm("Tem certeza que deseja concluir esta tarefa?")) {
+                                handleConcluir(token);
+                            }
                         }}
                         style={{ fontSize: 0 }}
+                        disabled={!canConclude}
                     >
                         <Image src="/validation-svgrepo-com.svg" alt="Mover para Em andamento" width={32} height={32} />
                     </button>

@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const prisma_service_1 = require("../prisma/prisma.service");
 const bcrypt = require("bcrypt");
+const client_1 = require("@prisma/client");
 let AuthService = class AuthService {
     constructor(jwtService, prisma) {
         this.jwtService = jwtService;
@@ -60,20 +61,46 @@ let AuthService = class AuthService {
         else {
             usuario_tipo = 0;
         }
-        return this.prisma.usuario.create({
-            data: {
-                nome: registerPayload.nome,
-                hash_senha: hashedPassword,
-                papel: registerPayload.papel,
-                cpf: registerPayload.cpf,
-                email: registerPayload.email,
-                usuario_tipo: usuario_tipo
-            },
-            select: {
-                nome: true,
-                papel: true
+        try {
+            return await this.prisma.usuario.create({
+                data: {
+                    nome: registerPayload.nome,
+                    hash_senha: hashedPassword,
+                    papel: registerPayload.papel,
+                    cpf: registerPayload.cpf,
+                    email: registerPayload.email,
+                    usuario_tipo: usuario_tipo
+                },
+                select: {
+                    nome: true,
+                    papel: true
+                }
+            });
+        }
+        catch (error) {
+            if (error instanceof client_1.Prisma.PrismaClientKnownRequestError &&
+                error.code === "P2002") {
+                const target = error.meta?.target;
+                if (Array.isArray(target)) {
+                    if (target.includes("cpf")) {
+                        throw new common_1.BadRequestException("Já existe um usuário com este CPF.");
+                    }
+                    if (target.includes("email")) {
+                        throw new common_1.BadRequestException("Já existe um usuário com este e-mail.");
+                    }
+                }
+                else if (typeof target === "string") {
+                    if (target.includes("cpf")) {
+                        throw new common_1.BadRequestException("Já existe um usuário com este CPF.");
+                    }
+                    if (target.includes("email")) {
+                        throw new common_1.BadRequestException("Já existe um usuário com este e-mail.");
+                    }
+                }
+                throw new common_1.BadRequestException("Erro ao cadastrar usuário.");
             }
-        });
+            throw error;
+        }
     }
     async listUsers() {
         return this.prisma.usuario.findMany({
@@ -83,6 +110,26 @@ let AuthService = class AuthService {
                 papel: true,
                 email: true,
                 cpf: true
+            }
+        });
+    }
+    async changeRole(changeRolePayload) {
+        const user = await this.prisma.usuario.findUnique({
+            where: { idusuario: changeRolePayload.idusuario },
+        });
+        if (!user) {
+            throw new common_1.UnauthorizedException('User not found');
+        }
+        if (changeRolePayload.role !== 'gestor' && changeRolePayload.role !== 'usuario' && changeRolePayload.role !== 'usuario/gestor') {
+            throw new common_1.UnauthorizedException('Invalid role');
+        }
+        return this.prisma.usuario.update({
+            where: { idusuario: changeRolePayload.idusuario },
+            data: { papel: changeRolePayload.role },
+            select: {
+                idusuario: true,
+                nome: true,
+                papel: true
             }
         });
     }

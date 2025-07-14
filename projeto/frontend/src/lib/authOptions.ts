@@ -5,7 +5,7 @@ declare module "next-auth" {
     interface Session {
         user: {
             id: number;
-            name: string;
+            name: string;   
             role: string;
         };
         accessToken: string;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
     useTarefas,
     handleCreateTarefa,
@@ -48,6 +48,15 @@ const STATUS_COLUNAS = [
     "Recusados",
 ];
 
+export type Comentario = {
+    idcomentario: number;
+    texto: string;
+    id_tarefa: number;
+    id_usuario: number;
+    usuario?: { nome: string };
+};
+
+
 type NovaTarefaModalProps = {
     open: boolean;
     onClose: () => void;
@@ -60,9 +69,93 @@ type NovaTarefaModalProps = {
         id_gestor: number;
     }) => void;
     id_projeto: number;
+    podeGerenciarTarefas: boolean;
 };
 
-const NovaTarefaModal: React.FC<NovaTarefaModalProps> = ({ open, onClose, onCreate, id_projeto }) => {
+type ComentarioSectionProps = {
+    tarefaId: number;
+    token: string;
+};
+
+const ComentarioSection: React.FC<ComentarioSectionProps> = ({ tarefaId, token }) => {
+    const { data: session } = useSession();
+    const [comentarios, setComentarios] = useState<Comentario[]>([]);
+    const [novoComentario, setNovoComentario] = useState("");
+    const [loading, setLoading] = useState(true);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const fetchComentarios = async () => {
+        setLoading(true);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comentario/tarefa/${tarefaId}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        setComentarios(Array.isArray(data) ? data : (data ? [data] : []));
+        setLoading(false);
+        setTimeout(() => {
+            scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+    };
+
+    useEffect(() => {
+        if (tarefaId) fetchComentarios();
+    }, [tarefaId]);
+
+    const handleComentar = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!novoComentario.trim()) return;
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comentario/create`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                texto: novoComentario,
+                id_tarefa: tarefaId,
+                id_usuario: session?.user?.id,
+            }),
+        });
+        setNovoComentario("");
+        fetchComentarios();
+    };
+
+    return (
+        <div className="bg-[#f3f4fa] rounded-xl p-4 mt-4">
+            <div className="font-bold text-lg mb-2 text-black">Comentários</div>
+            <div className="h-36 overflow-y-auto flex flex-col gap-3 mb-2 bg-white rounded p-2">
+                {loading ? (
+                    <div className="text-gray-400">Carregando...</div>
+                ) : comentarios.length === 0 ? (
+                    <div className="text-gray-400">Nenhum comentário ainda.</div>
+                ) : (
+                    comentarios.map((c) => (
+                        <div key={c.idcomentario} className="text-black">
+                            <span className="font-semibold text-blue-700">{c.usuario?.nome || "Usuário"}: </span>
+                            <span>{c.texto}</span>
+                        </div>
+                    ))
+                )}
+                <div ref={scrollRef} />
+            </div>
+            <form onSubmit={handleComentar} className="flex gap-2">
+                <input
+                    className="flex-1 p-2 rounded border border-gray-400 text-black"
+                    placeholder="Escreva um comentário..."
+                    value={novoComentario}
+                    onChange={e => setNovoComentario(e.target.value)}
+                    maxLength={1000}
+                />
+                <button type="submit" className="bg-blue-700 text-white px-3 py-1 rounded">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    );
+};
+
+
+const NovaTarefaModal: React.FC<NovaTarefaModalProps> = ({ open, onClose, onCreate, id_projeto, podeGerenciarTarefas }) => {
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
     const [dataInicio, setDataInicio] = useState("");
@@ -98,7 +191,9 @@ const NovaTarefaModal: React.FC<NovaTarefaModalProps> = ({ open, onClose, onCrea
                     <input type="date" required className="p-2 rounded border border-gray-400 text-black" value={prazo} onChange={e => setPrazo(e.target.value)} />
                     <div className="flex justify-end gap-2 mt-2">
                         <button type="button" className="bg-gray-300 text-black px-3 py-1 rounded" onClick={onClose}>Cancelar</button>
-                        <button type="submit" className="bg-blue-600 text-white px-3 py-1 rounded">Criar</button>
+                        <button type="submit" className="bg-blue-600 text-white px-3 py-1 rounded"
+                            disabled={!podeGerenciarTarefas}>
+                            Criar</button>
                     </div>
                 </form>
             </div>
@@ -114,6 +209,8 @@ type DetalheTarefaModalProps = {
     onDelete: () => void;
     onAddResponsavel: (idUsuario: number) => void;
     responsaveisOpcoes: Usuario[];
+    podeGerenciarTarefas: boolean;
+    status: string;
 };
 
 const DetalheTarefaModal: React.FC<DetalheTarefaModalProps> = ({
@@ -123,9 +220,13 @@ const DetalheTarefaModal: React.FC<DetalheTarefaModalProps> = ({
     onEdit,
     onDelete,
     onAddResponsavel,
-    responsaveisOpcoes
+    responsaveisOpcoes,
+    podeGerenciarTarefas,
+    status
 }) => {
     const [showResp, setShowResp] = useState(false);
+    const { data: session } = useSession();
+    const token = useSession().data?.accessToken || session?.accessToken || "";
 
     if (!open || !tarefa) return null;
 
@@ -154,9 +255,11 @@ const DetalheTarefaModal: React.FC<DetalheTarefaModalProps> = ({
                         </div>
                     ))}
 
-                    <button className="border rounded-full w-10 h-10 flex items-center justify-center cursor-pointer text-xl" title="Adicionar responsável" onClick={() => setShowResp(s => !s)}>
-                        +
-                    </button>
+                    {status !== "Concluído" && podeGerenciarTarefas && (
+                        <button className="border rounded-full w-10 h-10 flex items-center justify-center cursor-pointer text-xl" title="Adicionar responsável" onClick={() => setShowResp(s => !s)}>
+                            +
+                        </button>
+                    )}
                 </div>
                 {showResp && (
                     <div className="bg-[#e9e9f8] p-3 rounded-xl absolute left-28 top-28 shadow">
@@ -166,9 +269,14 @@ const DetalheTarefaModal: React.FC<DetalheTarefaModalProps> = ({
                         ))}
                     </div>
                 )}
+                <ComentarioSection tarefaId={tarefa.idtarefa} token={token} />
                 <div className="flex gap-2 justify-end mt-6">
-                    <button className="bg-yellow-600 px-4 py-1 rounded text-white cursor-pointer" onClick={onEdit}>Editar</button>
-                    <button className="bg-red-700 px-4 py-1 rounded text-white cursor-pointer" onClick={onDelete}>Excluir</button>
+                    {podeGerenciarTarefas && (
+                        <>
+                            <button className="bg-yellow-600 px-4 py-1 rounded text-white cursor-pointer" onClick={onEdit}>Editar</button>
+                            <button className="bg-red-700 px-4 py-1 rounded text-white cursor-pointer" onClick={onDelete}>Excluir</button>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
@@ -252,6 +360,11 @@ export default function KanbanTarefas({ token, usuarios, idProjeto }: KanbanTare
     const [responsavelId, setResponsavelId] = useState<number | null>(null);
 
     const { tarefas } = useTarefas(token, idProjeto, [reload, modalNova, modalDetalhe]) as { tarefas: Tarefa[] };
+
+    const { data: session } = useSession();
+    const isGestor = session?.user?.role?.toLowerCase() === "gestor";
+    const isGestorUsuario = session?.user?.role?.toLowerCase() === "usuario/gestor";
+    const podeGerenciarTarefas = isGestor || isGestorUsuario;
 
     const openDetalhe = (t: Tarefa) => { setTarefaDetalhe(t); setModalDetalhe(true); };
     const closeDetalhe = () => { setTarefaDetalhe(null); setModalDetalhe(false); };
@@ -356,83 +469,96 @@ export default function KanbanTarefas({ token, usuarios, idProjeto }: KanbanTare
 
 
     return (
-        <div className="min-h-screen w-full bg-[#040215] flex flex-col">
+        <>
             <Header
                 title={`Tarefas do ${nomeProjeto}`}
                 className="flex w-full" />
-            <div className="flex items-center gap-4 p-4 bg-[#181a23] text-white">
+            <div className="min-h-screen w-full bg-[#040215] flex flex-col">
+                <div className="flex items-center gap-4 p-4 bg-[#040215] text-white">
 
-                <div className="p-6 flex items-center justify-between">
-                    <button className="font-chakra bg-blue-700 px-6 py-2 rounded-xl text-lg text-white cursor-pointer mt-[-10px] mb-[-10px]" onClick={() => setModalNova(true)}>
-                        Adicionar tarefa
-                    </button>
-                </div>
-                <div className="flex items-center gap-4">
-                    {/* Filtro por Status */}
-                    <select
-                        className="p-2 rounded border border-gray-400 text-white"
-                        value={responsavelId || ""}
-                        onChange={e => setResponsavelId(e.target.value ? Number(e.target.value) : null)}
-                    >
-                        <option value="">Todos os responsáveis</option>
-                        {usuarios.map(u => (
-                            <option key={u.idusuario} value={u.idusuario}>{u.nome}</option>
-                        ))}
-                    </select>
-
-                    {/* Ordenação */}
-                    <label className="text-white ml-2">Ordenar por:</label>
-                    <select
-                        className="p-2 rounded border border-gray-400 text-white"
-                        value={ordenacao}
-                        onChange={e => setOrdenacao(e.target.value as "data" | "nome")}
-                    >
-                        <option value="data">Data</option>
-                        <option value="nome">Nome</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="flex flex-1 gap-3 overflow-x-auto px-4">
-                {STATUS_COLUNAS.map((status, idx) => (
-                    <div key={status} className={`flex-1 min-w-[260px] ${idx !== 0 ? 'border-l-4 border-blue-700' : ''} px-2`}>
-                        <div className="text-xl mb-2 ml-23 font-bold text-white">{status}</div>
-                        <div className="flex flex-col gap-6">
-                            {getTarefasFiltradas(status).map((t) => (
-                                <div key={t.idtarefa} className="flex flex-col items-center">
-                                    <div className="cursor-pointer w-full flex justify-center ml-5">
-                                        <TarefaCard tarefa={t} status={status}
-                                            onDetalhe={() => openDetalhe(t)}
-                                            onReload={() => setReload(x => !x)} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="p-6 flex items-center justify-between">
+                        {podeGerenciarTarefas && (
+                            <button
+                                className="font-chakra bg-blue-700 px-6 py-2 rounded-xl text-lg text-white cursor-pointer mt-[-10px] mb-[-10px]"
+                                onClick={() => setModalNova(true)}
+                            >
+                                Adicionar tarefa
+                            </button>
+                        )}
 
                     </div>
-                ))}
+                    <div className="flex items-center gap-4">
+                        {/* Filtro por Status */}
+                        <select
+                            className="p-2 rounded border border-gray-400 text-white"
+                            value={responsavelId || ""}
+                            onChange={e => setResponsavelId(e.target.value ? Number(e.target.value) : null)}
+                        >
+                            <option value="">Todos os responsáveis</option>
+                            {usuarios.map(u => (
+                                <option key={u.idusuario} value={u.idusuario}>{u.nome}</option>
+                            ))}
+                        </select>
+
+                        {/* Ordenação */}
+                        <label className="text-white ml-2">Ordenar por:</label>
+                        <select
+                            className="p-2 rounded border border-gray-400 text-white"
+                            value={ordenacao}
+                            onChange={e => setOrdenacao(e.target.value as "data" | "nome")}
+                        >
+                            <option value="data">Data</option>
+                            <option value="nome">Nome</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className="flex flex-1 gap-3 overflow-x-auto px-4">
+                    {STATUS_COLUNAS.map((status, idx) => (
+                        <div key={status} className={`flex-1 min-w-[260px] ${idx !== 0 ? 'border-l-4 border-blue-700' : ''} px-2`}>
+                            <div className="text-xl mb-2 ml-23 font-bold text-white">{status}</div>
+                            <div className="flex flex-col gap-6">
+                                {getTarefasFiltradas(status).map((t) => (
+                                    <div key={t.idtarefa} className="flex flex-col items-center">
+                                        <div className="cursor-pointer w-full flex justify-center ml-5">
+                                            <TarefaCard tarefa={t} status={status}
+                                                onDetalhe={() => openDetalhe(t)}
+                                                onReload={() => setReload(x => !x)} />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+                <NovaTarefaModal
+                    open={modalNova}
+                    onClose={() => setModalNova(false)}
+                    onCreate={handleCreate}
+                    id_projeto={idProjeto}
+                    podeGerenciarTarefas={podeGerenciarTarefas}
+                />
+
+                <DetalheTarefaModal
+                    open={modalDetalhe}
+                    tarefa={tarefaDetalhe}
+                    onClose={closeDetalhe}
+                    onEdit={() => setModalEditar(true)}
+                    onDelete={() => tarefaDetalhe && handleDelete(tarefaDetalhe.idtarefa)}
+                    onAddResponsavel={handleAddResponsavel}
+                    responsaveisOpcoes={usuarios}
+                    podeGerenciarTarefas={podeGerenciarTarefas}
+                    status={tarefaDetalhe?.status || ""}
+                />
+
+                <EditarTarefaModal
+                    open={modalEditar}
+                    tarefa={tarefaDetalhe}
+                    onClose={() => setModalEditar(false)}
+                    onEdit={handleEdit}
+                />
             </div>
-            <NovaTarefaModal
-                open={modalNova}
-                onClose={() => setModalNova(false)}
-                onCreate={handleCreate}
-                id_projeto={idProjeto}
-            />
-            <DetalheTarefaModal
-                open={modalDetalhe}
-                tarefa={tarefaDetalhe}
-                onClose={closeDetalhe}
-                onEdit={() => setModalEditar(true)}
-                onDelete={() => tarefaDetalhe && handleDelete(tarefaDetalhe.idtarefa)}
-                onAddResponsavel={handleAddResponsavel}
-                responsaveisOpcoes={usuarios}
-            />
-            <EditarTarefaModal
-                open={modalEditar}
-                tarefa={tarefaDetalhe}
-                onClose={() => setModalEditar(false)}
-                onEdit={handleEdit}
-            />
-        </div>
+        </>
     );
 }

@@ -42,7 +42,7 @@ let TarefaController = class TarefaController {
 };
 exports.TarefaController = TarefaController;
 __decorate([
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardUser),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -50,6 +50,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TarefaController.prototype, "createTarefa", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Patch)('update/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -58,6 +59,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TarefaController.prototype, "updateTarefa", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Delete)('delete/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -65,12 +67,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TarefaController.prototype, "deleteTarefa", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardUser),
     (0, common_1.Get)('list'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], TarefaController.prototype, "listTarefas", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardUser),
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -78,6 +82,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TarefaController.prototype, "getTarefaById", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Post)('addResponsavel/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)('responsavelId')),

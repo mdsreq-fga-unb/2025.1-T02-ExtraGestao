@@ -166,6 +166,10 @@ export default function Home() {
 
     const router = useRouter();
 
+    const isGestor = session?.user?.role?.toLowerCase() === "gestor";
+    const isGestorUsuario = session?.user?.role?.toLowerCase() === "usuario/gestor";
+    const podeGerenciarProjetos = isGestor || isGestorUsuario;
+
     const handleUpdateProjeto = async (id: number, formData: FormData) => {
         setLoadingUpdate(true);
         try {
@@ -302,14 +306,17 @@ export default function Home() {
                         </div>
                     ))}
                     {/* Card Novo Projeto */}
-                    <button
-                        key="novo-projeto-card"
-                        className="w-40 h-40 rounded-2xl border-2 border-blue-600 flex flex-col items-center justify-center hover:bg-blue-950 transition cursor-pointer mb-21.5"
-                        onClick={() => setModalOpen(true)}
-                    >
-                        <span className="text-blue-500 text-7xl mb-2">+</span>
-                        <span className="text-white">Novo projeto</span>
-                    </button>
+                    {podeGerenciarProjetos && (
+                        <button
+                            key="novo-projeto-card"
+                            className="w-40 h-40 rounded-2xl border-2 border-blue-600 flex flex-col items-center justify-center hover:bg-blue-950 transition cursor-pointer mb-21.5"
+                            onClick={() => setModalOpen(true)}
+                        >
+                            <span className="text-blue-500 text-7xl mb-2">+</span>
+                            <span className="text-white">Novo projeto</span>
+                        </button>
+                    )}
+
                 </div>
             </div>
             <NovoProjetoModal

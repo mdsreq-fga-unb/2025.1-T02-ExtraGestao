@@ -32,7 +32,7 @@ let JwtAuthGuardAdmin = class JwtAuthGuardAdmin extends (0, passport_1.AuthGuard
         if (err || !user) {
             throw new common_1.UnauthorizedException(info || 'Autenticação falhou');
         }
-        if (user.role !== 'administrador') {
+        if (user.role !== 'gestor' && user.role !== 'usuario/gestor') {
             throw new common_1.ForbiddenException('Acesso negado');
         }
         return user;

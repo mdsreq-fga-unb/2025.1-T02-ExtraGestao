@@ -13,23 +13,29 @@ interface HeaderProps {
 
 export default function Header({ title = "Home", className = "", children }: HeaderProps) {
     const { data: session } = useSession();
-
     const Router = useRouter();
 
     return (
-        <><header className={`w-full flex items-center justify-between px-10 py-4 bg-[#070424] border-b-2 border-blue-500 ${className}`}>
-            <div className="flex items-center gap-3">
+        <header
+            className={`w-full grid grid-cols-3 items-center px-10 py-4 bg-[#070424] border-b-2 border-blue-500 ${className}`}
+        >
+            {/* Esquerda - Título */}
+            <div className="flex items-center gap-3 justify-start">
                 <h1 className="font-chakra text-blue-400 text-2xl">{title}</h1>
                 {children}
             </div>
-            <div className="flex items-center gap-3"
+
+            {/* Centro - Ícone Home */}
+            <div className="flex items-center justify-center"
                 onClick={() => Router.push("/home")}>
                 <Image src="/home.svg" alt="home" width={40} height={40} className="w-13 h-13 cursor-pointer" />
             </div>
-            <div className="flex items-center gap-3">
+
+            {/* Direita - Perfil e Sair */}
+            <div className="flex items-center gap-3 justify-end">
                 <span className="text-white">{session?.user?.name || "Usuário"}</span>
                 <div className="rounded-full bg-white/10 p-2 border border-white/30">
-                    <svg width={32} height={32} fill="none" viewBox="0 0 24 24">
+                    <svg width={32} height={32} fill="none" viewBox="0 0 24 24" className="cursor-pointer" onClick={() => Router.push("/adm")}>
                         <circle cx="12" cy="8" r="4" stroke="#fff" strokeWidth="2" />
                         <path stroke="#fff" strokeWidth="2" d="M4 20c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                     </svg>
@@ -45,7 +51,6 @@ export default function Header({ title = "Home", className = "", children }: Hea
                     <span className="hidden sm:inline">Sair</span>
                 </button>
             </div>
-        </header >
-        </>
+        </header>
     );
 }

@@ -1,8 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from "../prisma/prisma.service";
-import { LoginDTO, RegisterDTO } from "./auth.dto";
+import { ChangeRoleDTO, LoginDTO, RegisterDTO } from "./auth.dto";
 import * as bcrypt from 'bcrypt';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -60,20 +61,46 @@ export class AuthService {
             usuario_tipo = 0;
         }
 
-        return this.prisma.usuario.create({
-            data: {
-                nome: registerPayload.nome,
-                hash_senha: hashedPassword,
-                papel: registerPayload.papel,
-                cpf: registerPayload.cpf,
-                email: registerPayload.email,
-                usuario_tipo: usuario_tipo
-            },
-            select: {
-                nome: true,
-                papel: true
+        try {
+            return await this.prisma.usuario.create({
+                data: {
+                    nome: registerPayload.nome,
+                    hash_senha: hashedPassword,
+                    papel: registerPayload.papel,
+                    cpf: registerPayload.cpf,
+                    email: registerPayload.email,
+                    usuario_tipo: usuario_tipo
+                },
+                select: {
+                    nome: true,
+                    papel: true
+                }
+            });
+        } catch (error) {
+            if (
+                error instanceof Prisma.PrismaClientKnownRequestError &&
+                error.code === "P2002"
+            ) {
+                const target = error.meta?.target;
+                if (Array.isArray(target)) {
+                    if (target.includes("cpf")) {
+                        throw new BadRequestException("Já existe um usuário com este CPF.");
+                    }
+                    if (target.includes("email")) {
+                        throw new BadRequestException("Já existe um usuário com este e-mail.");
+                    }
+                } else if (typeof target === "string") {
+                    if (target.includes("cpf")) {
+                        throw new BadRequestException("Já existe um usuário com este CPF.");
+                    }
+                    if (target.includes("email")) {
+                        throw new BadRequestException("Já existe um usuário com este e-mail.");
+                    }
+                }
+                throw new BadRequestException("Erro ao cadastrar usuário.");
             }
-        })
+            throw error;
+        }
     }
 
     async listUsers() {
@@ -84,6 +111,30 @@ export class AuthService {
                 papel: true,
                 email: true,
                 cpf: true
+            }
+        });
+    }
+
+    async changeRole(changeRolePayload: ChangeRoleDTO) {
+        const user = await this.prisma.usuario.findUnique({
+            where: { idusuario: changeRolePayload.idusuario },
+        });
+
+        if (!user) {
+            throw new UnauthorizedException('User not found');
+        }
+
+        if (changeRolePayload.role !== 'gestor' && changeRolePayload.role !== 'usuario' && changeRolePayload.role !== 'usuario/gestor') {
+            throw new UnauthorizedException('Invalid role');
+        }
+
+        return this.prisma.usuario.update({
+            where: { idusuario: changeRolePayload.idusuario },
+            data: { papel: changeRolePayload.role },
+            select: {
+                idusuario: true,
+                nome: true,
+                papel: true
             }
         });
     }

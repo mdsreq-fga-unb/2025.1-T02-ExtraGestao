@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JwtPayload = exports.LoginDTO = exports.RegisterDTO = void 0;
+exports.ChangeRoleDTO = exports.JwtPayload = exports.LoginDTO = exports.RegisterDTO = void 0;
 class RegisterDTO {
 }
 exports.RegisterDTO = RegisterDTO;
@@ -10,4 +10,7 @@ exports.LoginDTO = LoginDTO;
 class JwtPayload {
 }
 exports.JwtPayload = JwtPayload;
+class ChangeRoleDTO {
+}
+exports.ChangeRoleDTO = ChangeRoleDTO;
 //# sourceMappingURL=auth.dto.js.map

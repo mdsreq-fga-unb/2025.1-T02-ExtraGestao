@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ProjetoModule } from './projeto/projeto.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { TarefaModule } from './tarefa/tarefa.module';
+import { ComentarioModule } from './comentario/comentario.module';
 
 @Module({
   imports: [AuthModule, PrismaModule, TodoModule,
@@ -15,7 +16,8 @@ import { TarefaModule } from './tarefa/tarefa.module';
       envFilePath: '.env',
     }),
     ProjetoModule,
-    TarefaModule
+    TarefaModule,
+    ComentarioModule
   ],
   controllers: [AppController],
   providers: [AppService],

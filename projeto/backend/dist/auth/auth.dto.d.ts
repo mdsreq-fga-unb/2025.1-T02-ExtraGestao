@@ -14,3 +14,7 @@ export declare class JwtPayload {
     username: string;
     role: string;
 }
+export declare class ChangeRoleDTO {
+    idusuario: number;
+    role: string;
+}

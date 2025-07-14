@@ -1,6 +1,6 @@
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from "../prisma/prisma.service";
-import { LoginDTO, RegisterDTO } from "./auth.dto";
+import { ChangeRoleDTO, LoginDTO, RegisterDTO } from "./auth.dto";
 export declare class AuthService {
     private readonly jwtService;
     private readonly prisma;
@@ -23,4 +23,9 @@ export declare class AuthService {
         email: string;
         papel: string;
     }[]>;
+    changeRole(changeRolePayload: ChangeRoleDTO): Promise<{
+        idusuario: number;
+        nome: string;
+        papel: string;
+    }>;
 }

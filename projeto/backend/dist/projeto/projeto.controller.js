@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const projeto_service_1 = require("./projeto.service");
 const projeto_dto_1 = require("./projeto.dto");
 const platform_express_1 = require("@nestjs/platform-express");
+const jwt_guard_1 = require("../auth/jwt.guard");
 let ProjetoController = class ProjetoController {
     constructor(projetoService) {
         this.projetoService = projetoService;
@@ -61,6 +62,7 @@ let ProjetoController = class ProjetoController {
 };
 exports.ProjetoController = ProjetoController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Post)('create'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('foto')),
     __param(0, (0, common_1.Body)()),
@@ -70,6 +72,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProjetoController.prototype, "createProjeto", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Patch)('update/:id'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('foto')),
     __param(0, (0, common_1.Body)()),
@@ -80,6 +83,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProjetoController.prototype, "updateProjeto", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
     (0, common_1.Delete)('delete/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -87,12 +91,14 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProjetoController.prototype, "deleteProjeto", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardUser),
     (0, common_1.Get)('list'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ProjetoController.prototype, "listProjetos", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardUser),
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

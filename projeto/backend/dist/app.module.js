@@ -16,6 +16,7 @@ const config_1 = require("@nestjs/config");
 const projeto_module_1 = require("./projeto/projeto.module");
 const prisma_module_1 = require("./prisma/prisma.module");
 const tarefa_module_1 = require("./tarefa/tarefa.module");
+const comentario_module_1 = require("./comentario/comentario.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -27,7 +28,8 @@ exports.AppModule = AppModule = __decorate([
                 envFilePath: '.env',
             }),
             projeto_module_1.ProjetoModule,
-            tarefa_module_1.TarefaModule
+            tarefa_module_1.TarefaModule,
+            comentario_module_1.ComentarioModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

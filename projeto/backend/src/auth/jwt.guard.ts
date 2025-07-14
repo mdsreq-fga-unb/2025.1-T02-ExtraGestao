@@ -25,7 +25,7 @@ export class JwtAuthGuardAdmin extends AuthGuard('jwt') {
         if (err || !user) {
             throw new UnauthorizedException(info || 'Autenticação falhou');
         }
-        if (user.role !== 'administrador') {
+        if (user.role !== 'gestor' && user.role !== 'usuario/gestor') {
             throw new ForbiddenException('Acesso negado');
         }
         return user;

@@ -16,12 +16,21 @@ exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const auth_dto_1 = require("./auth.dto");
+const jwt_guard_1 = require("./jwt.guard");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    login(authPayload) {
-        return this.authService.login(authPayload);
+    async login(authPayload, res) {
+        const loginResult = await this.authService.login(authPayload);
+        res.cookie('session-token', loginResult.access_token, {
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === 'production',
+            path: '/',
+            maxAge: 1000 * 60 * 60 * 24,
+        });
+        return res.json(loginResult);
     }
     register(authPayload) {
         return this.authService.register(authPayload);
@@ -29,14 +38,18 @@ let AuthController = class AuthController {
     listUsers() {
         return this.authService.listUsers();
     }
+    changeRole(changeRolePayload) {
+        return this.authService.changeRole(changeRolePayload);
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [auth_dto_1.LoginDTO]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [auth_dto_1.LoginDTO, Object]),
+    __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
     (0, common_1.Post)('register'),
@@ -46,11 +59,20 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "register", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardUser),
     (0, common_1.Get)('list'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "listUsers", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuardAdmin),
+    (0, common_1.Patch)('changeRole'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [auth_dto_1.ChangeRoleDTO]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "changeRole", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

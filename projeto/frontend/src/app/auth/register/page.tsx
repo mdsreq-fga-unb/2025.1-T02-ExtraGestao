@@ -35,7 +35,6 @@ export default function Register() {
     const [cpf, setCpf] = useState("");
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
-    const [papel, setPapel] = useState("usuario/gestor");
     const [senha, setSenha] = useState("");
     const [senhaRepetida, setSenhaRepetida] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -50,8 +49,7 @@ export default function Register() {
         nome.trim().length > 2 &&
         email.includes("@") &&
         senha.length >= 4 &&
-        senhaRepetida.length >= 4 &&
-        papel.length > 0;
+        senhaRepetida.length >= 4
 
     const podeCadastrar = camposObrigatoriosPreenchidos && senha === senhaRepetida;
 
@@ -75,7 +73,7 @@ export default function Register() {
                     nome,
                     email,
                     senha,
-                    papel,
+                    papel: "usuario",
                 }),
             });
 
@@ -172,16 +170,6 @@ export default function Register() {
                                 onChange={e => setEmail(e.target.value)}
                                 required
                             />
-                            <select
-                                className="rounded-lg px-4 py-2 bg-white/90 text-black text-lg font-mono outline-none focus:ring-2 focus:ring-[#1976FF] transition w-full"
-                                value={papel}
-                                onChange={e => setPapel(e.target.value)}
-                                required
-                            >
-                                <option value="usuario/gestor">Usuário/Gestor</option>
-                                <option value="gestor">Gestor</option>
-                                <option value="usuario">Usuário</option>
-                            </select>
                             <input
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Senha"

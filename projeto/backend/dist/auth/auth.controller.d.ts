@@ -1,14 +1,9 @@
 import { AuthService } from "./auth.service";
-import { LoginDTO, RegisterDTO } from "./auth.dto";
+import { ChangeRoleDTO, LoginDTO, RegisterDTO } from "./auth.dto";
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
-    login(authPayload: LoginDTO): Promise<{
-        access_token: string;
-        username: any;
-        role: any;
-        sub: any;
-    }>;
+    login(authPayload: LoginDTO, res: any): Promise<any>;
     register(authPayload: RegisterDTO): Promise<{
         nome: string;
         papel: string;
@@ -20,4 +15,9 @@ export declare class AuthController {
         email: string;
         papel: string;
     }[]>;
+    changeRole(changeRolePayload: ChangeRoleDTO): Promise<{
+        idusuario: number;
+        nome: string;
+        papel: string;
+    }>;
 }
