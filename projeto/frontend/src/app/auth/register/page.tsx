@@ -5,10 +5,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export const metadata = {
-    title: 'Registro | Extra Software',
-    description: 'Crie uma conta no Extra Software.',
-};
 
 export default function Register() {
     const formatCpf = (cpf: string) => {
