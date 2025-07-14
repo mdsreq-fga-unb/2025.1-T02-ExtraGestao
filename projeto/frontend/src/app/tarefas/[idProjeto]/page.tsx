@@ -32,6 +32,7 @@ export default function Page({ params }: { params: PageParams }) {
 
     useEffect(() => {
         fetchUsuarios();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     if (!idProjeto || !token) return null;

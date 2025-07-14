@@ -85,6 +85,7 @@ export default function UsuariosPage() {
 
     useEffect(() => {
         if (token) fetchUsuarios();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
     const handleChangeRole = async (

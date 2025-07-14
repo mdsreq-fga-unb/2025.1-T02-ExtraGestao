@@ -99,6 +99,7 @@ const ComentarioSection: React.FC<ComentarioSectionProps> = ({ tarefaId, token }
 
     useEffect(() => {
         if (tarefaId) fetchComentarios();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tarefaId]);
 
     const handleComentar = async (e: React.FormEvent) => {

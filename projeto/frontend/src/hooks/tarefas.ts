@@ -33,6 +33,7 @@ export function useTarefas(token: string, idProjeto: number, refreshDeps: unknow
             .then(data => setTarefas(data.filter((t: { id_projeto: number; }) => t.id_projeto === idProjeto)))
             .catch(() => setTarefas([]))
             .finally(() => setLoading(false));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token, idProjeto, ...refreshDeps]);
 
     return { tarefas, setTarefas, loading };
