@@ -30,6 +30,10 @@ nav:
   
   - "Caso de uso":
       - "Caso de Uso: Criar perfil do paciente": casos-de-uso/caso-de-uso-1.md
+      - "Caso de Uso: Gerenciar Usuários": casos-de-uso/caso-de-uso-2.md
+      - "Caso de Uso: Localizar serviço de saúde": casos-de-uso/caso-de-uso-3.md
+      - "Caso de Uso: Criar relatório da comunidade": casos-de-uso/caso-de-uso-4.md
+      - "Caso de Uso: Receber pontos de fidelidade": casos-de-uso/caso-de-uso-5.md
 
   - "Pautas":
       - "Pauta 1": pautas/pauta1.md
