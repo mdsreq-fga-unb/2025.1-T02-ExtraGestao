@@ -1,5 +1,5 @@
 # Produto Final
-O produto final está disponível em: wwww.extrasoftware.com.br
+O produto final está disponível em: www.extrasoftware.com.br
 
 # Feedback do cliente
 <audio controls>
