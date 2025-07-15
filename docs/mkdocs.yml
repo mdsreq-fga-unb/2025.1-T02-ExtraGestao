@@ -27,6 +27,9 @@ nav:
       - "PBB": estudos-de-caso/pbb.md
       - "USM": estudos-de-caso/usm.md
       - "DIAGRAMA": estudos-de-caso/casosdeuso.md
+  
+  - "Caso de uso":
+      - "Caso de Uso: Criar perfil do paciente": casos-de-uso/caso-de-uso-1.md
 
   - "Pautas":
       - "Pauta 1": pautas/pauta1.md
@@ -34,10 +37,16 @@ nav:
       - "Pauta 3": pautas/pauta3.md
       - "Pauta 4": pautas/pauta4.md
       - "Pauta 5": pautas/pauta5.md
+      - "Pauta 6": pautas/pauta6.md
+      - "Pauta 7": pautas/pauta7.md
+      - "Pauta 8": pautas/pauta8.md
+      - "Pauta 9": pautas/pauta9.md
+      - "Pauta 10": pautas/pauta10.md
 
-  
   - "Protótipo":
       - "Protótipo de Alta Fidelidade": prototipos/prototipoAlta.md
+
+  - "Produto":
   
 
 
