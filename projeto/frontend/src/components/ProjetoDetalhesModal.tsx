@@ -44,7 +44,7 @@ export default function ProjetoDetalhesModal({
                         <div><b>Gestor:</b> {projeto.nome_gestor}</div>
                     </div>
                 </div>
-                {isGestor || isGestorUsuario && (
+                {(isGestor || isGestorUsuario) && (
                     <div className="flex gap-3 mt-6 justify-end">
                         {projeto.status !== "CONCLUIDO" && (
                             <button
@@ -64,6 +64,7 @@ export default function ProjetoDetalhesModal({
                         </button>
                     </div>
                 )}
+
             </div>
         </div>
     );

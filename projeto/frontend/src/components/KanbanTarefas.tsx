@@ -276,7 +276,7 @@ const DetalheTarefaModal: React.FC<DetalheTarefaModalProps> = ({
                 )}
                 <ComentarioSection tarefaId={tarefa.idtarefa} token={token} />
                 <div className="flex gap-2 justify-end mt-6">
-                    {podeGerenciarTarefas && (
+                    {podeGerenciarTarefas && tarefa.status.toUpperCase() !== "CONCLUÍDO" && (
                         <>
                             <button className="bg-yellow-600 px-4 py-1 rounded text-white cursor-pointer" onClick={onEdit}>Editar</button>
                             <button className="bg-red-700 px-4 py-1 rounded text-white cursor-pointer" onClick={onDelete}>Excluir</button>
@@ -471,6 +471,8 @@ export default function KanbanTarefas({ token, usuarios, idProjeto }: KanbanTare
             });
             if (!res.ok) throw new Error("Erro ao adicionar responsável");
             setReload(x => !x);
+            closeDetalhe();
+            setTimeout(() => { openDetalhe(tarefaDetalhe); }, 100);
         } catch (error) {
             console.error(error);
         }

@@ -1,6 +1,6 @@
 # Pauta da Reunião Sprint 12 (Final)
 
-## Data: 14/07/2025 (prevista)
+## Data: 14/07/2025
 
 ### Participantes:
 - José
@@ -20,4 +20,5 @@
 - Formalizar aceite final do cliente.
 
 #### Parte 3: Encerramento
+- Gravação do feedback do cliente.
 - Definir próximos passos pós-entrega com o cliente.
