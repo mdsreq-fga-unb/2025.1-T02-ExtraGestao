@@ -3,7 +3,7 @@ O produto final está disponível em: www.extrasoftware.com.br
 
 # Feedback do cliente
 <audio controls>
-  <source src="/assets/Audio_Cliente.mp3" type="audio/mpeg">
+  <source src="../assets/Audio_Cliente.mp3" type="audio/mpeg">
   Seu navegador não suporta o elemento de áudio.
 </audio>
 
