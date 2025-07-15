@@ -26,6 +26,7 @@ nav:
   - "Estudos de caso":
       - "PBB": estudos-de-caso/pbb.md
       - "USM": estudos-de-caso/usm.md
+      - "DIAGRAMA": estudos-de-caso/casosdeuso.md
 
   - "Pautas":
       - "Pauta 1": pautas/pauta1.md
