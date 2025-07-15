@@ -34,3 +34,33 @@ Durante o desenvolvimento do projeto, a equipe enfrentou desafios significativos
 
 ### 2: MoSCoW
 Outro ponto de aprendizado relevante foi em relação à técnica MoSCoW. No início, houve certa dificuldade em compreender plenamente seus critérios de priorização. No entanto, com o suporte adequado, orientações precisas e a correção dos equívocos, a equipe conseguiu alinhar seu entendimento e aplicar a técnica de forma eficaz ao longo do projeto.
+
+# Lições Aprendidas - Unidade 4
+
+## Lições aprendidas e dificuldades com ações para superá-las
+
+### 1. Definição dos Casos de Uso por Ator
+
+- **Desafio:**  
+  Compreender com clareza as ações que cada ator realiza e o que espera do sistema, evitando confusões com funcionalidades específicas ou ferramentas utilizadas.
+
+- **Ação de melhoria:**  
+  Análise de forma mais aprofundada no comportamento e nas necessidades de cada ator, registrando informações mais completas e detalhadas durante a análise de cada um.
+
+
+### 2. Elaboração do Diagrama de Casos de Uso
+
+- **Desafio:**  
+  Representar corretamente os casos de uso que envolvem mais de um ator e mapear com precisão quais casos são atribuídos a cada ator.
+
+- **Ação de melhoria:**  
+  Estudar mais a fundo a estrutura e os elementos do diagrama de casos de uso para utilizá-los de maneira adequada, aprimorando a clareza e a compreensão da visão geral do sistema.
+
+
+### 3. Detalhamento dos Casos de Uso
+
+- **Desafio:**  
+  Descrever o fluxo principal de cada caso de uso com base nas ações dos atores, além de mapear variações, exceções e regras de negócio envolvidas.
+
+- **Ação de melhoria:**  
+  Analisar com mais cuidado como os atores interagem com o sistema, identificando as funcionalidades-chave para o seu funcionamento e detalhando os passos relevantes nos fluxos e nas regras de negócio.

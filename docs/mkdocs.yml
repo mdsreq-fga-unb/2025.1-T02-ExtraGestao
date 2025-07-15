@@ -21,7 +21,7 @@ nav:
       - "Processo de Engenharia de Requisitos": er/processo-de-engenharia-de-requisitos.md
 
   - "Apresentações":
-      - "Apresentação 1": vpp/apresentacao.md
+      - "Apresentação": vpp/apresentacao.md
 
   - "Estudos de caso":
       - "PBB": estudos-de-caso/pbb.md
