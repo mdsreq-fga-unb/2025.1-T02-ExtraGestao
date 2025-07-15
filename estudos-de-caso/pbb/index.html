@@ -1080,6 +1080,98 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casos-de-uso/caso-de-uso-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caso de Uso: Gerenciar Usuários
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casos-de-uso/caso-de-uso-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caso de Uso: Localizar serviço de saúde
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casos-de-uso/caso-de-uso-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caso de Uso: Criar relatório da comunidade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../casos-de-uso/caso-de-uso-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caso de Uso: Receber pontos de fidelidade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1549,413 +1641,179 @@
 
 <h1 id="bdd-healthnet">BDD - HealthNet</h1>
 <p>O BDD (Behavior Driven Development) é uma abordagem de desenvolvimento de software que enfatiza a colaboração entre desenvolvedores, testadores e não programadores. O objetivo é garantir que todos os envolvidos tenham uma compreensão clara dos requisitos e do comportamento esperado do sistema.</p>
-<h2 id="us01-buscar-e-acessar-o-cadastro-de-um-paciente">US01: Buscar e acessar o cadastro de um paciente</h2>
-<p><strong>Cenário 1: Busca bem-sucedida por nome completo</strong></p>
+<p><strong>US01: Buscar e acessar o cadastro de um paciente</strong></p>
 <ul>
-<li>
-<p>Dado que o recepcionista está logado no sistema.</p>
+<li><strong>Cenário 1: Busca bem-sucedida por nome completo</strong>  </li>
+<li><strong>Dado</strong> que a recepcionista "Maria" está logada no sistema.  </li>
+<li><strong>E</strong> existe um paciente cadastrado com o nome "Carlos Pereira" e CPF "111.222.333-44".  </li>
+<li><strong>Quando</strong> a recepcionista insere "Carlos Pereira" na barra de busca.  </li>
+<li><strong>Então</strong> o sistema deve exibir uma linha com "Carlos Pereira" e seu CPF "111.222.333-44" na lista de resultados.  </li>
+<li><strong>Cenário 2: Busca bem-sucedida por CPF</strong>  </li>
+<li><strong>Dado</strong> que a recepcionista "Maria" está logada no sistema.  </li>
+<li><strong>E</strong> existe um paciente cadastrado com o nome "Carlos Pereira" e CPF "111.222.333-44".  </li>
+<li><strong>Quando</strong> a recepcionista insere "111.222.333-44" na barra de busca.  </li>
+<li><strong>Então</strong> o sistema deve exibir uma linha com "Carlos Pereira" e seu CPF "111.222.333-44" na lista de resultados.</li>
+</ul>
+<p><strong>US02: Cadastrar um novo paciente</strong></p>
+<ul>
+<li><strong>Cenário 1: Preenchimento do formulário de cadastro com sucesso</strong>  </li>
+<li><strong>Dado</strong> que a recepcionista "Maria" está na tela de "Cadastro de Novo Paciente".  </li>
+<li><strong>Quando</strong> ela preenche os campos com os seguintes dados:  <ul>
+<li>Nome completo: "Mariana Costa"  </li>
+<li>CPF: "222.333.444-55"  </li>
+<li>Data de nascimento: "20/11/1992"  </li>
+<li>Contato (Telefone): "(11) 98765-4321"  </li>
+<li>Endereço: "Rua das Flores, 123, São Paulo, SP"  </li>
+</ul>
 </li>
-<li>
-<p>E existe um paciente cadastrado com o nome "José da Silva" em uma das unidades da rede.</p>
-</li>
-<li>
-<p>Quando o recepcionista insere "José da Silva" na barra de busca.</p>
-</li>
-<li>
-<p>Então o sistema deve exibir "José da Silva" na lista de pacientes correspondentes.</p>
+<li><strong>E</strong> clica no botão "Salvar".  </li>
+<li><strong>Então</strong> o paciente "Mariana Costa" deve ser criado no sistema.  </li>
+<li><strong>E</strong> a mensagem "Paciente cadastrado com sucesso!" é exibida.  </li>
+<li><strong>Cenário 2: Validação de CPF e data de nascimento em tempo real</strong>  </li>
+<li><strong>Dado</strong> que a recepcionista "Maria" está preenchendo o formulário de cadastro.  </li>
+<li><strong>Quando</strong> ela insere o CPF "222.333.444" no campo CPF.  </li>
+<li><strong>Então</strong> a mensagem de erro "Formato de CPF inválido" é exibida abaixo do campo CPF em tempo real.  </li>
+<li><strong>Quando</strong> ela insere a data de nascimento "35/13/2025" no campo de data de nascimento.  </li>
+<li><strong>Então</strong> a mensagem de erro "Data de nascimento inválida" é exibida abaixo do campo em tempo real.</li>
+</ul>
+<p><strong>US03: Marcar uma consulta para um paciente</strong></p>
+<ul>
+<li><strong>Cenário 1: Acesso rápido ao agendamento</strong>  </li>
+<li><strong>Dado</strong> que a recepcionista "Maria" acessou o cadastro do paciente "Carlos Pereira".  </li>
+<li><strong>Quando</strong> ela clica no botão "Agendar Consulta".  </li>
+<li><strong>Então</strong> o sistema a redireciona para a tela de agendamento, já com o paciente "Carlos Pereira" selecionado.  </li>
+<li><strong>Cenário 2: Marcação de consulta em horário vago</strong>  </li>
+<li><strong>Dado</strong> que "Maria" está na tela de agendamento para o paciente "Carlos Pereira".  </li>
+<li><strong>E</strong> ela selecionou o médico "Dr. João".  </li>
+<li><strong>Quando</strong> ela visualiza a agenda do médico, onde o horário das "10:30" de "03/07/2025" está marcado como disponível.  </li>
+<li><strong>E</strong> seleciona o horário das "10:30".  </li>
+<li><strong>Então</strong> a consulta é marcada e confirmada, exibindo um resumo: "Consulta agendada para Carlos Pereira com Dr. João em 03/07/2025 às 10:30".</li>
+</ul>
+<p><strong>US04: Acessar o prontuário eletrônico unificado</strong></p>
+<ul>
+<li><strong>Cenário 1: Visualização do prontuário completo</strong>  </li>
+<li><strong>Dado</strong> que o médico "Dr. João" está logado e tem "Carlos Pereira" agendado para as "10:30".  </li>
+<li><strong>Quando</strong> ele clica no agendamento de "Carlos Pereira".  </li>
+<li><strong>Então</strong> o sistema deve exibir o prontuário eletrônico completo do paciente, consolidando informações de todas as unidades.  </li>
+<li><strong>E</strong> o prontuário deve ser carregado em no máximo 5 segundos.  </li>
+<li><strong>Cenário 2: Histórico em ordem cronológica decrescente</strong>  </li>
+<li><strong>Dado</strong> que "Dr. João" está visualizando o prontuário de "Carlos Pereira".  </li>
+<li><strong>Quando</strong> ele acessa a seção "Histórico Clínico".  </li>
+<li><strong>Então</strong> o prontuário deve apresentar os registros na seguinte ordem:  <ul>
+<li>02/07/2025 - Consulta - Dr. João  </li>
+<li>15/03/2025 - Exame de Sangue - Unidade Central  </li>
+<li>10/01/2025 - Diagnóstico de Hipertensão - Dr. Ana Lima</li>
+</ul>
 </li>
 </ul>
-<p><strong>Cenário 2: Busca bem-sucedida por CPF:</strong></p>
+<p><strong>US05: Adicionar informações no prontuário eletrônico</strong></p>
 <ul>
-<li>
-<p>Dado que o recepcionista está logado no sistema.</p>
-</li>
-<li>
-<p>E existe um paciente cadastrado com o CPF "123.456.789-00".</p>
-</li>
-<li>
-<p>Quando o recepcionista insere "123.456.789-00" na barra de busca.</p>
-</li>
-<li>
-<p>Então o sistema deve exibir o paciente correspondente a esse CPF na lista.</p>
-</li>
+<li><strong>Cenário 1: Registrar nova informação clínica</strong>  </li>
+<li><strong>Dado</strong> que o médico "Dr. João" está com o prontuário de "Carlos Pereira" aberto.  </li>
+<li><strong>Quando</strong> ele adiciona a nota clínica: "Paciente relata dor de cabeça persistente".  </li>
+<li><strong>E</strong> registra o diagnóstico com o CID-10: "R51 - Cefaleia".  </li>
+<li><strong>E</strong> solicita um novo exame: "Tomografia Computadorizada do Crânio".  </li>
+<li><strong>E</strong> clica no botão "Salvar Atendimento".  </li>
+<li><strong>Então</strong> as informações são salvas com a data e hora atuais e a identificação "Dr. João".  </li>
+<li><strong>E</strong> estas novas informações ficam imediatamente visíveis para outros profissionais autorizados.</li>
 </ul>
-<h2 id="us02-cadastrar-um-novo-paciente">US02: Cadastrar um novo paciente</h2>
-<p><strong>Cenário 1: Preenchimento do formulário de cadastro:</strong></p>
+<p><strong>US06: Criar prescrições digitais com alertas</strong></p>
 <ul>
-<li>
-<p>Dado que o recepcionista está na tela de cadastro de novo paciente.</p>
-</li>
-<li>
-<p>Quando ele preenche todos os campos essenciais (nome completo, CPF, data de nascimento, contato, endereço) em uma única página.</p>
-</li>
-<li>
-<p>E clica no botão "Salvar".</p>
-</li>
-<li>
-<p>Então o novo paciente deve ser criado com sucesso.</p>
-</li>
-<li>
-<p>E uma mensagem de sucesso deve ser exibida.</p>
-</li>
+<li><strong>Cenário 1: Alerta de alergia a medicamento</strong>  </li>
+<li><strong>Dado</strong> que o paciente "Carlos Pereira" possui um registro de alergia a "Penicilina" em seu prontuário.  </li>
+<li><strong>Quando</strong> o "Dr. João" tenta prescrever "Amoxicilina 500mg".  </li>
+<li><strong>Então</strong> o sistema deve exibir um alerta em destaque com o texto: "ALERTA: Paciente alérgico a Penicilina. Amoxicilina pertence a esta classe de medicamentos.".  </li>
+<li><strong>Cenário 2: Alerta de interação medicamentosa</strong>  </li>
+<li><strong>Dado</strong> que "Carlos Pereira" já tem uma prescrição ativa de "Varfarina".  </li>
+<li><strong>Quando</strong> o "Dr. João" tenta prescrever "Aspirina 100mg".  </li>
+<li><strong>Então</strong> o sistema deve alertar: "ALERTA DE INTERAÇÃO: Aspirina pode potencializar o efeito anticoagulante da Varfarina, aumentando o risco de sangramento.".  </li>
+<li><strong>Cenário 3: Confirmação de leitura dos alertas</strong>  </li>
+<li><strong>Dado</strong> que o sistema exibiu um alerta de alergia e um de interação medicamentosa.  </li>
+<li><strong>Quando</strong> o "Dr. João" tenta clicar em "Finalizar Prescrição".  </li>
+<li><strong>Então</strong> o botão deve permanecer desabilitado até que ele marque a caixa de seleção com o texto "Li e estou ciente dos alertas de segurança".</li>
 </ul>
-<p><strong>Cenário 2: Validação de CPF e data de nascimento em tempo real:</strong></p>
+<p><strong>US07: Envio automático da prescrição digital</strong></p>
 <ul>
-<li>
-<p>Dado que o recepcionista está preenchendo o formulário de cadastro.</p>
-</li>
-<li>
-<p>Quando ele insere um CPF com formato inválido.</p>
-</li>
-<li>
-<p>Então o sistema deve indicar um erro de preenchimento para o campo CPF em tempo real.</p>
-</li>
-<li>
-<p>Quando ele insere uma data de nascimento com formato inválido.</p>
-</li>
-<li>
-<p>Então o sistema deve indicar um erro de preenchimento para o campo de data de nascimento em tempo real.</p>
-</li>
+<li><strong>Cenário 1: Envio automático bem-sucedido</strong>  </li>
+<li><strong>Dado</strong> que o "Dr. João" finalizou e salvou uma prescrição de "Losartana 50mg" para "Carlos Pereira".  </li>
+<li><strong>Quando</strong> a prescrição é salva.  </li>
+<li><strong>Então</strong> o sistema a envia automaticamente para a farmácia "Farmácia Popular" e para o email "carlos.p@email.com" e SMS para "(11) 99999-8888".  </li>
+<li><strong>E</strong> "Carlos Pereira" recebe um SMS com o texto: "Sua nova prescrição do Dr. João já está disponível. Acesse o Portal do Paciente ou dirija-se à farmácia.".  </li>
+<li><strong>E</strong> o status "Prescrição enviada com sucesso" é registrado no prontuário.</li>
 </ul>
-<h2 id="us03-marcar-uma-consulta-para-um-paciente">US03: Marcar uma consulta para um paciente</h2>
-<p><strong>Cenário 1: Acesso rápido ao agendamento</strong></p>
+<p><strong>US08: Ter uma visão unificada das agendas</strong></p>
 <ul>
-<li>
-<p>Dado que o recepcionista acessou o cadastro de um paciente.</p>
-</li>
-<li>
-<p>Quando ele clica no botão para agendar uma consulta.</p>
-</li>
-<li>
-<p>Então o sistema deve levá-lo para a funcionalidade de agendamento com um único clique.
-<strong>Cenário 2: Marcação de consulta em horário vago</strong> </p>
-</li>
-<li>
-<p>Dado que o recepcionista está na tela de agendamento para um paciente.</p>
-</li>
-<li>
-<p>E ele selecionou um médico.</p>
-</li>
-<li>
-<p>Quando ele visualiza a agenda do médico com os horários disponíveis claramente marcados.</p>
-</li>
-<li>
-<p>E seleciona um horário vago.</p>
-</li>
-<li>
-<p>Então a consulta deve ser marcada e confirmada instantaneamente.</p>
-</li>
+<li><strong>Cenário 2: Prevenção de agendamento duplo</strong> (Cenário 1 e 3 não possuem nomes a serem trocados)  </li>
+<li><strong>Dado</strong> que a agenda do "Dr. João" já tem uma consulta marcada para "Carlos Pereira" às 10:30 de 03/07/2025.  </li>
+<li><strong>Quando</strong> a recepcionista "Maria" tenta marcar "Mariana Costa" para o "Dr. João" no mesmo dia e horário, 10:30.  </li>
+<li><strong>Então</strong> o sistema deve impedir o agendamento.  </li>
+<li><strong>E</strong> deve exibir a mensagem de erro: "Conflito de agenda. O Dr. João já possui um compromisso neste horário.".</li>
 </ul>
-<h2 id="us04-acessar-o-prontuario-eletronico-unificado">US04: Acessar o prontuário eletrônico unificado</h2>
-<p><strong>Cenário 1: Visualização do prontuário completo</strong> </p>
+<p><strong>US09: Enviar lembretes automáticos aos pacientes</strong></p>
 <ul>
-<li>
-<p>Dado que o médico está logado e tem um paciente agendado.</p>
-</li>
-<li>
-<p>Quando ele seleciona o paciente agendado.</p>
-</li>
-<li>
-<p>Então o sistema deve exibir o prontuário eletrônico completo do paciente, consolidando informações de todas as unidades.</p>
-</li>
-<li>
-<p>E o prontuário deve ser carregado em no máximo 5 segundos.</p>
-</li>
+<li><strong>Cenário 1: Envio de lembrete 24 horas antes</strong>  </li>
+<li><strong>Dado</strong> que "Carlos Pereira" tem uma consulta agendada com "Dr. João" para "03/07/2025 às 10:30" na "Unidade Central".  </li>
+<li><strong>Quando</strong> o sistema executa a rotina de lembretes em "02/07/2025 às 10:30".  </li>
+<li><strong>Então</strong> um SMS é enviado para "(11) 99999-8888" com o texto: "Lembrete: sua consulta com Dr. João é amanhã, 03/07/2025, às 10:30 na Unidade Central.".  </li>
+<li><strong>E</strong> o prontuário de "Carlos Pereira" registra uma entrada: "Lembrete de consulta via SMS enviado em 02/07/2025".</li>
 </ul>
-<p><strong>Cenário 2: Histórico em ordem cronológica</strong></p>
+<p><strong>US10: Bloquear/desbloquear horários na agenda dos médicos</strong></p>
 <ul>
-<li>
-<p>Dado que o médico está visualizando o prontuário de um paciente.</p>
-</li>
-<li>
-<p>Quando ele acessa o histórico do paciente.</p>
-</li>
-<li>
-<p>Então o prontuário deve apresentar o histórico de consultas, exames, diagnósticos e prescrições em ordem cronológica.</p>
-</li>
+<li><strong>Cenário 1: Bloquear um horário vago com sucesso</strong>  </li>
+<li><strong>Dado</strong> que o Coordenador de Agendamento "Rafael" está visualizando a agenda do "Dr. João" para 04/07/2025.  </li>
+<li><strong>E</strong> o horário das 14:00 está vago.  </li>
+<li><strong>Quando</strong> ele seleciona o horário das 14:00 e escolhe a opção "Bloquear Horário".  </li>
+<li><strong>E</strong> informa o motivo "Reunião de equipe".  </li>
+<li><strong>Então</strong> o slot das 14:00 na agenda do "Dr. João" deve ser exibido como "Bloqueado - Reunião de equipe".  </li>
+<li><strong>E</strong> não deve ser possível agendar uma nova consulta neste horário.  </li>
+<li><strong>Cenário 2: Tentar agendar em um horário bloqueado</strong>  </li>
+<li><strong>Dado</strong> que a recepcionista "Maria" está logada no sistema.  </li>
+<li><strong>E</strong> a agenda do "Dr. João" tem um bloqueio às 14:00.  </li>
+<li><strong>Quando</strong> ela tenta marcar uma nova consulta para um paciente às 14:00 com o "Dr. João".  </li>
+<li><strong>Então</strong> o sistema deve exibir uma mensagem de erro informando "Este horário está bloqueado".  </li>
+<li><strong>Cenário 3: Desbloquear um horário com sucesso</strong>  </li>
+<li><strong>Dado</strong> que o Coordenador de Agendamento "Rafael" está logado no sistema.  </li>
+<li><strong>E</strong> a agenda do "Dr. João" possui um horário bloqueado às 14:00.  </li>
+<li><strong>Quando</strong> ele seleciona o horário das 14:00 e escolhe a opção "Desbloquear Horário".  </li>
+<li><strong>Então</strong> o horário das 14:00 na agenda do "Dr. João" deve voltar a ser exibido como "Disponível".</li>
 </ul>
-<h2 id="us05-adicionar-informacoes-no-prontuario-eletronico">US05: Adicionar informações no prontuário eletrônico</h2>
-<p><strong>Cenário 1: Registrar nova informação clínica</strong> </p>
+<p><strong>US11: Monitorar a saúde e o desempenho do sistema</strong></p>
 <ul>
-<li>
-<p>Dado que o médico está com o prontuário de um paciente aberto.</p>
-</li>
-<li>
-<p>Quando ele adiciona uma nota clínica na seção correspondente.</p>
-</li>
-<li>
-<p>E registra um diagnóstico utilizando o CID-10.</p>
-</li>
-<li>
-<p>E solicita um novo exame.</p>
-</li>
-<li>
-<p>E salva as informações.</p>
-</li>
-<li>
-<p>Então as informações salvas devem ser registradas com a data, hora e a identificação do médico responsável.
-E as novas informações devem ser imediatamente visíveis para outros profissionais autorizados.</p>
-</li>
+<li><strong>Cenário 2: Recebimento de alertas de desempenho</strong> (Cenário 1 não possui nome a ser trocado)  </li>
+<li><strong>Dado</strong> que o limite de alerta para uso de CPU foi definido em 90%.  </li>
+<li><strong>E</strong> o Diretor de TI "Roberto" está cadastrado para receber alertas.  </li>
+<li><strong>Quando</strong> o uso de CPU do servidor de aplicação atinge 92% por mais de 5 minutos.  </li>
+<li><strong>Então</strong> o sistema envia um email para "roberto@ti.saude.com" com o assunto "ALERTA DE DESEMPENHO" e corpo "Uso de CPU atingiu 92%".</li>
 </ul>
-<h2 id="us06-criar-prescricoes-digitais-com-alertas">US06: Criar prescrições digitais com alertas</h2>
-<p><strong>Cenário 1: Alerta de alergia a medicamento</strong> </p>
+<p><strong>US12: Gerar relatórios de auditoria e conformidade</strong></p>
 <ul>
-<li>
-<p>Dado que o paciente possui um registro de alergia a "penicilina".</p>
-</li>
-<li>
-<p>Quando o médico tenta prescrever um medicamento que contém "penicilina".</p>
-</li>
-<li>
-<p>Então o sistema deve exibir um alerta sobre o risco de alergia.</p>
-</li>
+<li><strong>Cenário 1: Geração de relatório de acesso a dados</strong>  </li>
+<li><strong>Dado</strong> que o Diretor de TI "Roberto" precisa auditar o prontuário do paciente "Carlos Pereira" (CPF 111.222.333-44).  </li>
+<li><strong>Quando</strong> ele utiliza a função "Gerar Relatório de Auditoria".  </li>
+<li><strong>E</strong> filtra pelo CPF "111.222.333-44" e pelo período de "01/07/2025" a "02/07/2025".  </li>
+<li><strong>Então</strong> o sistema gera um relatório contendo linhas como:  <ul>
+<li>01/07/2025 15:20 | Maria | Leitura | Cadastro do Paciente  </li>
+<li>02/07/2025 10:35 | Dr. João | Escrita | Notas Clínicas  </li>
 </ul>
-<p><strong>Cenário 2: Alerta de interação medicamentosa</strong> </p>
-<ul>
-<li>
-<p>Dado que o paciente já faz uso de um medicamento "A".</p>
 </li>
-<li>
-<p>Quando o médico tenta prescrever um medicamento "B" que tem interação perigosa com "A".</p>
-</li>
-<li>
-<p>Então o sistema deve alertar sobre a possível interação medicamentosa.</p>
-</li>
+<li><strong>E</strong> o relatório oferece botões para exportar em PDF e CSV.</li>
 </ul>
-<p><strong>Cenário 3: Confirmação de leitura dos alertas</strong> </p>
+<p><strong>US13: Gerenciar os perfis de acesso dos usuários</strong></p>
 <ul>
-<li>
-<p>Dado que o sistema exibiu um ou mais alertas de segurança.</p>
-</li>
-<li>
-<p>Quando o médico tenta finalizar a prescrição.</p>
-</li>
-<li>
-<p>Então a prescrição só pode ser finalizada após o médico confirmar que leu e está ciente dos alertas exibidos.</p>
-</li>
-</ul>
-<h2 id="us07-envio-automatico-da-prescricao-digital">US07: Envio automático da prescrição digital</h2>
-<p><strong>Cenário 1: Envio automático bem-sucedido</strong> </p>
-<ul>
-<li>
-<p>Dado que o médico finalizou uma prescrição digital.</p>
-</li>
-<li>
-<p>Quando a prescrição é salva.</p>
-</li>
-<li>
-<p>Então o sistema deve enviá-la automaticamente para a farmácia conveniada e para o portal do paciente.</p>
-</li>
-<li>
-<p>E o paciente deve receber uma notificação (email ou SMS) sobre a nova prescrição.</p>
-</li>
-<li>
-<p>E o status "Enviado com sucesso" deve ser registrado no prontuário.</p>
-</li>
-</ul>
-<h2 id="us08-ter-uma-visao-unificada-das-agendas">US08: Ter uma visão unificada das agendas</h2>
-<p><strong>Cenário 1: Visualização consolidada de agendas</strong> </p>
-<ul>
-<li>
-<p>Dado que o coordenador de agendamento está logado no sistema.</p>
-</li>
-<li>
-<p>Quando ele acessa o painel de agendamento.</p>
-</li>
-<li>
-<p>Então o painel deve exibir uma visualização diária, semanal e mensal das agendas de todos os médicos e salas lado a lado.</p>
-</li>
-</ul>
-<p><strong>Cenário 2: Prevenção de agendamento duplo</strong> </p>
-<ul>
-<li>
-<p>Dado que o médico "Dr. João" já tem um horário agendado às 10:00.</p>
-</li>
-<li>
-<p>Quando o coordenador tenta marcar outra consulta para "Dr. João" no mesmo horário.</p>
-</li>
-<li>
-<p>Então o sistema deve impedir o agendamento.</p>
-</li>
-<li>
-<p>E deve exibir uma mensagem de erro informando o conflito.</p>
-</li>
-</ul>
-<p><strong>Cenário 3:  Atualização em tempo real</strong></p>
-<ul>
-<li>
-<p>Dado que o coordenador está com o painel de agendas aberto.</p>
-</li>
-<li>
-<p>Quando um recepcionista cancela uma consulta.</p>
-</li>
-<li>
-<p>Então o cancelamento deve ser refletido em tempo real no painel do coordenador.</p>
-</li>
-</ul>
-<h2 id="us09-enviar-lembretes-automaticos-aos-pacientes">US09: Enviar lembretes automáticos aos pacientes</h2>
-<p><strong>Cenário 1: Envio de lembrete 24 horas antes</strong> </p>
-<ul>
-<li>
-<p>Dado que um paciente tem uma consulta agendada para amanhã.</p>
-</li>
-<li>
-<p>Quando o sistema verifica os agendamentos do dia seguinte.</p>
-</li>
-<li>
-<p>Então o sistema deve enviar automaticamente um lembrete via SMS e/ou e-mail para o paciente 24 horas antes do horário.</p>
-</li>
-<li>
-<p>E o lembrete deve conter o nome do paciente, nome do médico, data, hora e local da consulta.</p>
-</li>
-<li>
-<p>E o sistema deve registrar no prontuário do paciente que o lembrete foi enviado.</p>
-</li>
-</ul>
-<h2 id="us10-bloqueardesbloquear-horarios-na-agenda-dos-medicos">US10: Bloquear/desbloquear horários na agenda dos médicos</h2>
-<p><strong>Cenário 1: Bloquear um horário vago com sucesso</strong></p>
-<ul>
-<li>
-<p>Dado que eu sou um Coordenador de Agendamento e estou logado no sistema</p>
-</li>
-<li>
-<p>E estou visualizando a agenda do Dr. João, que possui um horário vago às 14:00</p>
-</li>
-<li>
-<p>Quando eu seleciono o horário das 14:00 e escolho a opção "Bloquear Horário"</p>
-</li>
-<li>
-<p>E informo o motivo "Reunião de equipe"</p>
-</li>
-<li>
-<p>Então o horário das 14:00 na agenda do Dr. João deve ser exibido como "Bloqueado"</p>
-</li>
-<li>
-<p>E não deve ser possível agendar uma nova consulta neste horário.</p>
-</li>
-</ul>
-<p><strong>Cenário 2: Tentar agendar em um horário bloqueado</strong> </p>
-<ul>
-<li>
-<p>Dado que eu sou uma Recepcionista e estou logada no sistema</p>
-</li>
-<li>
-<p>E a agenda do Dr. João tem um bloqueio às 14:00</p>
-</li>
-<li>
-<p>Quando eu tento marcar uma nova consulta para um paciente às 14:00 com o Dr. João</p>
-</li>
-<li>
-<p>Então o sistema deve exibir uma mensagem de erro informando "Este horário está bloqueado"</p>
-</li>
-<li>
-<p>E a consulta não deve ser agendada.</p>
-</li>
-</ul>
-<p><strong>Cenário 3: Desbloquear um horário com sucesso</strong> </p>
-<ul>
-<li>
-<p>Dado que eu sou um Coordenador de Agendamento e estou logado no sistema</p>
-</li>
-<li>
-<p>E a agenda do Dr. João possui um horário bloqueado às 14:00</p>
-</li>
-<li>
-<p>Quando eu seleciono o horário das 14:00 e escolho a opção "Desbloquear Horário"</p>
-</li>
-<li>
-<p>Então o horário das 14:00 na agenda do Dr. João deve voltar a ser exibido como "Disponível"</p>
-</li>
-<li>
-<p>E deve ser possível agendar uma nova consulta neste horário.</p>
-</li>
-</ul>
-<h2 id="us11-monitorar-a-saude-e-o-desempenho-do-sistema">US11: Monitorar a saúde e o desempenho do sistema</h2>
-<p><strong>Cenário 1: Visualização de métricas em tempo real</strong></p>
-<ul>
-<li>
-<p>Dado que o Diretor de TI está logado no sistema.</p>
-</li>
-<li>
-<p>Quando ele acessa o dashboard de monitoramento.</p>
-</li>
-<li>
-<p>Então o dashboard deve exibir métricas como tempo de resposta, uso de CPU e memória em tempo real.</p>
-</li>
-<li>
-<p>E deve mostrar o status de disponibilidade dos principais serviços.</p>
-</li>
-</ul>
-<p><strong>Cenário 2: Recebimento de alertas de desempenho</strong> </p>
-<ul>
-<li>
-<p>Dado que um limite de uso de CPU foi pré-definido em 90%.</p>
-</li>
-<li>
-<p>Quando o uso de CPU do sistema ultrapassa 90%.</p>
-</li>
-<li>
-<p>Então o sistema deve enviar um alerta automático para o Diretor de TI.</p>
-</li>
-</ul>
-<h2 id="us12-gerar-relatorios-de-auditoria-e-conformidade">US12: Gerar relatórios de auditoria e conformidade</h2>
-<p><strong>Cenário 1: Geração de relatório de acesso a dados</strong> </p>
-<ul>
-<li>
-<p>Dado que o Diretor de TI precisa auditar o acesso aos dados de um paciente específico.</p>
-</li>
-<li>
-<p>Quando ele utiliza a função de gerar relatórios de auditoria.</p>
-</li>
-<li>
-<p>E filtra por um paciente e período específico.</p>
-</li>
-<li>
-<p>Então o sistema deve gerar um relatório que registre quem acessou, inseriu, alterou ou excluiu os dados daquele paciente, com data e hora.</p>
-</li>
-<li>
-<p>E o relatório deve ser exportável em PDF e CSV.</p>
-</li>
-</ul>
-<h2 id="us13-gerenciar-os-perfis-de-acesso-dos-usuarios">US13: Gerenciar os perfis de acesso dos usuários</h2>
-<p><strong>Cenário 1: Acesso restrito para recepcionista</strong> </p>
-<ul>
-<li>
-<p>Dado que um usuário está logado com o perfil "Recepcionista".</p>
-</li>
-<li>
-<p>Quando ele acessa o prontuário de um paciente.</p>
-</li>
-<li>
-<p>Então ele NÃO deve ter acesso a informações clínicas detalhadas, como notas de evolução e diagnósticos.</p>
-</li>
-</ul>
-<p><strong>Cenário 2: Acesso completo para médico</strong></p>
-<ul>
-<li>
-<p>Dado que um usuário está logado com o perfil "Médico".</p>
-</li>
-<li>
-<p>Quando ele acessa o prontuário de um paciente.</p>
-</li>
-<li>
-<p>Então ele deve ter acesso completo ao prontuário clínico.</p>
-</li>
-<li>
-<p>Mas NÃO deve ter permissão para gerenciar perfis de outros usuários.</p>
-</li>
-</ul>
-<p><strong>Cenário 3: Permissões de Administrador</strong></p>
-<ul>
-<li>
-<p>Dado que o Diretor de TI está logado com um perfil de administrador.</p>
-</li>
-<li>
-<p>Quando ele acessa a área de gerenciamento de usuários.</p>
-</li>
-<li>
-<p>Então ele deve ser capaz de criar, editar ou remover contas de usuário e atribuir perfis.</p>
-</li>
+<li><strong>Cenário 1: Acesso restrito para recepcionista</strong>  </li>
+<li><strong>Dado</strong> que "Maria" está logada com o perfil "Recepcionista".  </li>
+<li><strong>Quando</strong> ela acessa o prontuário de "Carlos Pereira".  </li>
+<li><strong>Então</strong> ela pode ver dados cadastrais (nome, CPF, contato) e agendamentos.  </li>
+<li><strong>Mas</strong> as seções "Notas Clínicas", "Diagnósticos" e "Prescrições" devem estar ocultas ou exibir uma mensagem "Acesso restrito".  </li>
+<li><strong>Cenário 2: Acesso completo para médico</strong>  </li>
+<li><strong>Dado</strong> que "Dr. João" está logado com o perfil "Médico".  </li>
+<li><strong>Quando</strong> ele acessa o prontuário de "Carlos Pereira".  </li>
+<li><strong>Então</strong> ele deve ter acesso completo ao prontuário clínico.  </li>
+<li><strong>Mas</strong> NÃO deve ter permissão para gerenciar perfis de outros usuários.  </li>
+<li><strong>Cenário 3: Permissões de Administrador</strong>  </li>
+<li><strong>Dado</strong> que "Roberto", o Diretor de TI, está logado com um perfil de "Administrador".  </li>
+<li><strong>Quando</strong> ele acessa a área de "Gerenciamento de Usuários".  </li>
+<li><strong>Então</strong> ele deve ser capaz de criar, editar ou remover contas de usuário e atribuir perfis como "Recepcionista", "Médico" ou "Coordenador".</li>
 </ul>
 <h1 id="pbb-funcionalidades-e-user-stories">PBB — Funcionalidades e User Stories</h1>
 <table>
